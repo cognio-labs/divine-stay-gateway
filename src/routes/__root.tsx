@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Book peaceful rooms and satsang halls at Sakshi Dham International, a premium spiritual ashram in the heart of Vrindavan.",
       },
       { name: "author", content: "Sakshi Dham International" },
-      { property: "og:title", content: "Sakshi Dham International — Vrindavan Ashram" },
+      { property: "og:title", content: "Sakshi Dham International — Spiritual Ashram Stay in Vrindavan" },
       {
         property: "og:description",
         content:
@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sakshi Dham International — Spiritual Ashram Stay in Vrindavan" },
+      { name: "description", content: "Divine Stay Gateway is a premium hotel booking website for Sakshi Dham International, a spiritual ashram in Vrindavan." },
+      { property: "og:description", content: "Divine Stay Gateway is a premium hotel booking website for Sakshi Dham International, a spiritual ashram in Vrindavan." },
+      { name: "twitter:description", content: "Divine Stay Gateway is a premium hotel booking website for Sakshi Dham International, a spiritual ashram in Vrindavan." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d6a959e3-a173-4565-8508-2553a9d0f856/id-preview-fcf68220--e323a158-e87e-4fd7-a6c7-cd2c1e3e8cd1.lovable.app-1782900773746.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d6a959e3-a173-4565-8508-2553a9d0f856/id-preview-fcf68220--e323a158-e87e-4fd7-a6c7-cd2c1e3e8cd1.lovable.app-1782900773746.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
