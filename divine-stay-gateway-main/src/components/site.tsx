@@ -82,6 +82,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
+  const isHomePage = currentPath === "/";
+  const useSolidNavbar = scrolled || !isHomePage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,7 +96,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
-        scrolled
+        useSolidNavbar
           ? "top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full glass shadow-soft py-2.5 px-6"
           : "top-0 w-full bg-transparent py-5 px-6 border-b border-transparent"
       }`}
@@ -133,7 +135,7 @@ export function Navbar() {
                 className={`text-sm font-semibold relative group transition-colors duration-300 ${
                   active
                     ? "text-primary"
-                    : scrolled
+                    : useSolidNavbar
                     ? "text-foreground/80 hover:text-foreground"
                     : "text-white/85 hover:text-white drop-shadow-sm"
                 }`}
@@ -159,7 +161,7 @@ export function Navbar() {
           </a>
           <button
             className={`lg:hidden w-10 h-10 grid place-items-center rounded-full border transition-all duration-300 ${
-              scrolled
+              useSolidNavbar
                 ? "border-border bg-white/40 text-foreground"
                 : "border-white/20 bg-white/10 text-white"
             }`}
