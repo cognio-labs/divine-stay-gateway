@@ -1513,8 +1513,6 @@ export function PageHero({
           </a>
         </motion.div>
 
-    name: "Family Suite Room",
-    img: "/assets-custom/room-family-new.jpg",
     price: "2,999",
     capacity: "4-6 Guests",
     badge: "Best for Kids",
