@@ -42,7 +42,7 @@ import roomDeluxeStock from "@/assets/room-deluxe.jpg";
 import roomFamilyStock from "@/assets/room-family.jpg";
 
 const gurujiImage = "/guruji.png";
-const siteLogo = "/navbar-logo.png";
+const siteLogo = "/science-divine-logo.png";
 const mandirImage = "/assets-custom/mandir-wide.jpeg";
 const roomDeluxeImage = "/assets-custom/room-1.jpeg";
 const roomFamilyImage = "/assets-custom/room-2.jpeg";
