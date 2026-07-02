@@ -1518,7 +1518,6 @@ export function PageHero({
 }
 
 
-    policies: [
       "Check-in from 12:00 PM",
       "Ideal for companions",
       "Quiet environment",
