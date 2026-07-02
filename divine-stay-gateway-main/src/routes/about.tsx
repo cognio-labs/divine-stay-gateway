@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
-import { AboutPage } from "@/components/site";
+const AboutPage = lazy(() => import("@/components/site").then((m) => ({ default: m.AboutPage })));
 
 export const Route = createFileRoute("/about")({
-  component: AboutPage,
+  component: () => (
+    <Suspense fallback={null}>
+      <AboutPage />
+    </Suspense>
+  ),
 });
