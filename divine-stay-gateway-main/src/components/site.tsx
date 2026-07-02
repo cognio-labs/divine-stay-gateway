@@ -31,6 +31,7 @@ import {
   Utensils,
   HeartHandshake,
   Sparkle,
+  Landmark,
 } from "lucide-react";
 
 import heroHall from "@/assets/hero-hall.jpg";
@@ -40,7 +41,7 @@ import flowers from "@/assets/flowers.jpg";
 
 const gurujiImage = "/guruji.png";
 const siteLogo = "https://sciencedivine.org/wp-content/uploads/2023/07/cropped-SD_logo.png";
-const mandirImage = "/assets-custom/mandir-new.jpeg";
+const mandirImage = "/assets-custom/mandir-wide.jpeg";
 const roomDeluxeImage = "/assets-custom/room-1.jpeg";
 const roomFamilyImage = "/assets-custom/room-2.jpeg";
 const hallImage = "/assets-custom/hall-1.jpeg";
@@ -66,7 +67,8 @@ export function HomePage() {
   return (
     <PageShell>
       <Hero />
-      <About />
+      <WhyChooseSakshiDham />
+      <Rooms />
       <Testimonials />
     </PageShell>
   );
@@ -125,7 +127,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
-              href="/rooms"
+              href="/contact#booking"
               className="hidden sm:inline-flex btn-saffron rounded-full px-5 py-2.5 text-sm font-semibold animate-pulse-glow"
             >
               Book Now
@@ -158,7 +160,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="/rooms"
+                href="/contact#booking"
                 onClick={() => setOpen(false)}
                 className="mt-2 btn-saffron rounded-xl px-4 py-3 text-center text-sm font-semibold"
               >
@@ -275,7 +277,7 @@ export function Hero() {
           className="mt-9 flex flex-wrap justify-center gap-3"
         >
           <a
-            href="/rooms"
+            href="/contact#booking"
             className="btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
           >
             Book Room <ChevronRight className="w-4 h-4" />
@@ -319,7 +321,127 @@ function Particles() {
   );
 }
 
-/* ------------------------------ ABOUT ----------------------------- */
+/* ------------------------------ WHY CHOOSE SAKSHI DHAM ----------------------------- */
+function WhyChooseSakshiDham() {
+  const highlights = [
+    {
+      icon: Landmark,
+      title: "Sacred Location",
+      desc: "Located in the heart of Vrindavan, steps from major temples and spiritual sites.",
+    },
+    {
+      icon: BedDouble,
+      title: "Comfortable Stay",
+      desc: "Modern amenities beautifully blended with the calm serenity of ashram life.",
+    },
+    {
+      icon: Users,
+      title: "For Everyone",
+      desc: "Perfect for devotees, families, spiritual seekers, and pilgrimage groups.",
+    },
+    {
+      icon: HeartHandshake,
+      title: "15+ Years of Seva",
+      desc: "Trusted hospitality rooted in devotion, warmth, and selfless care.",
+    },
+  ];
+
+  return (
+    <section
+      className="relative py-24 sm:py-32 px-4 sm:px-6 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(160deg, #FDF8F0 0%, #F5EAD8 50%, #FDF8F0 100%)",
+      }}
+    >
+      {/* Decorative radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_top,rgba(232,164,76,0.18),transparent_70%)]" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-[radial-gradient(circle,rgba(232,164,76,0.12),transparent_70%)]" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <motion.p
+            {...fadeUp}
+            className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-semibold mb-4"
+          >
+            Why Stay With Us
+          </motion.p>
+          <motion.h2
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.05 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight"
+          >
+            Experience true{" "}
+            <span className="text-gradient-gold italic">divine peace</span>
+          </motion.h2>
+          <motion.p
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.1 }}
+            className="mt-5 max-w-2xl mx-auto text-muted-foreground leading-relaxed"
+          >
+            A sacred sanctuary in Vrindavan where every stay is shaped by devotion, warmth, and
+            the timeless spirit of bhakti.
+          </motion.p>
+        </div>
+
+        {/* 4-card highlights grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          {highlights.map((h, i) => (
+            <motion.div
+              key={h.title}
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative rounded-3xl p-7 shadow-card hover:shadow-soft hover:-translate-y-2 transition-all duration-500 cursor-default"
+              style={{
+                background: "color-mix(in oklab, #FDFAF5 90%, transparent)",
+                border: "1px solid color-mix(in oklab, #D9C4A0 32%, transparent)",
+              }}
+            >
+              {/* Subtle hover glow bg */}
+              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: "radial-gradient(circle at 30% 30%, rgba(217,196,160,0.12), transparent 70%)" }}
+              />
+              {/* Icon */}
+              <div className="relative w-14 h-14 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow mb-5 group-hover:scale-110 transition-transform duration-300">
+                <h.icon className="w-7 h-7 text-white" />
+              </div>
+              {/* Text */}
+              <h3 className="font-display text-2xl font-semibold leading-tight mb-2">{h.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{h.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          {...fadeUp}
+          transition={{ ...fadeUp.transition, delay: 0.3 }}
+          className="mt-14 flex flex-wrap justify-center gap-4"
+        >
+          <a
+            href="/contact#booking"
+            className="btn-saffron rounded-full px-8 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
+          >
+            Book Your Stay <ChevronRight className="w-4 h-4" />
+          </a>
+          <a
+            href="/about"
+            className="rounded-full border-2 border-border px-8 py-3.5 text-sm font-semibold text-foreground hover:bg-accent transition-all duration-300 inline-flex items-center gap-2"
+          >
+            About the Ashram
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ ABOUT (About Page) ----------------------------- */
 export function About() {
   const features = [
     { icon: Sparkles, label: "Peaceful Environment" },
@@ -332,77 +454,101 @@ export function About() {
 
   return (
     <section id="about" className="relative py-24 sm:py-32 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-        <motion.div {...fadeUp} className="relative">
-          <div className="relative rounded-[2rem] overflow-hidden shadow-soft">
-            <img
-              src={exterior}
-              alt="Sakshi Dham exterior"
-              loading="lazy"
-              decoding="async"
-              width={1280}
-              height={960}
-              className="w-full h-[520px] object-cover"
-            />
-          </div>
-          <div className="absolute -bottom-8 -right-4 sm:-right-8 w-40 sm:w-52 rounded-2xl overflow-hidden shadow-soft ring-4 ring-background rotate-3">
-            <img
-              src={flowers}
-              alt="Diya and marigold"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute -top-6 -left-4 glass rounded-2xl px-4 py-3 shadow-card">
-            <div className="text-2xl font-display font-semibold text-gradient-gold">15+</div>
-            <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
-              Years of Seva
+      {/* Guruji & Ashram Story */}
+      <div className="max-w-5xl mx-auto">
+        <motion.p
+          {...fadeUp}
+          className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-semibold text-center"
+        >
+          Our Story
+        </motion.p>
+        <motion.h2
+          {...fadeUp}
+          transition={{ ...fadeUp.transition, delay: 0.05 }}
+          className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight text-center"
+        >
+          About the <span className="text-gradient-gold italic">Ashram</span>
+        </motion.h2>
+
+        <motion.div
+          {...fadeUp}
+          transition={{ ...fadeUp.transition, delay: 0.1 }}
+          className="mt-14 rounded-[2rem] overflow-hidden shadow-soft"
+          style={{ background: "color-mix(in oklab, white 65%, #FDF8F0)" }}
+        >
+          <div className="grid lg:grid-cols-[320px_1fr]">
+            {/* Guruji Image */}
+            <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
+              <img
+                src={gurujiImage}
+                alt="Pujya Guruji of Sakshi Dham International"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-top"
+                style={{ minHeight: "320px" }}
+                onError={(e) => { e.currentTarget.src = flowers; }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/30 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#FDF8F0]/20" />
+            </div>
+
+            {/* Content */}
+            <div className="p-8 sm:p-10 lg:p-12">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Sakshi Dham International is a spiritual ashram nestled in the sacred land of
+                Vrindavan, the eternal abode of Sri Krishna. Founded under the divine guidance of
+                our Pujya Guruji, the ashram is a sanctuary for sadhakas seeking refuge in devotion.
+              </p>
+              <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                For decades, Guruji has lit the lamp of bhakti in the hearts of thousands of
+                devotees across the world. His teachings — gentle, profound, and rooted in the
+                timeless wisdom of the Vedas — guide seekers towards self-realisation through love
+                and surrender.
+              </p>
+              <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Whether you come for a few days of retreat, a satsang gathering, or simply to walk
+                the lanes of Vrindavan in quiet remembrance, you are welcome here.
+              </p>
+
+              {/* Stats row */}
+              <div className="mt-8 flex flex-wrap gap-4">
+                {[["15+", "Years of Seva"], ["500+", "Devotees Hosted"], ["24/7", "Seva Support"]].map(([val, label]) => (
+                  <div key={label} className="text-center px-5 py-3 rounded-2xl"
+                    style={{ background: "linear-gradient(135deg, rgba(232,164,76,0.12), rgba(217,119,6,0.08))" }}>
+                    <div className="font-display text-3xl font-semibold text-gradient-gold">{val}</div>
+                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground mt-1">{label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
+      </div>
 
-        <div>
-          <motion.p
-            {...fadeUp}
-            className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium"
-          >
-            About the Ashram
-          </motion.p>
-          <motion.h2
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.05 }}
-            className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight"
-          >
-            Welcome to <span className="text-gradient-gold italic">Sakshi Dham</span> International
-          </motion.h2>
-          <motion.p
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.1 }}
-            className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed"
-          >
-            Sakshi Dham International is a spiritual ashram in Vrindavan offering peaceful
-            accommodation, satsang halls, and divine surroundings for devotees, families, and
-            spiritual seekers.
-          </motion.p>
-
-          <div className="mt-10 grid sm:grid-cols-2 gap-3">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.5 }}
-                className="group glass rounded-2xl p-4 flex items-center gap-3 hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <div className="w-11 h-11 rounded-xl bg-gradient-saffron grid place-items-center shadow-glow group-hover:scale-110 transition-transform">
-                  <f.icon className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-medium text-sm">{f.label}</span>
-              </motion.div>
-            ))}
-          </div>
+      {/* Features grid */}
+      <div className="max-w-7xl mx-auto mt-20">
+        <div className="text-center mb-10">
+          <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-semibold">Ashram Facilities</p>
+          <h3 className="mt-3 font-display text-3xl sm:text-4xl font-medium">
+            Everything you need for a <span className="text-gradient-gold italic">peaceful stay</span>
+          </h3>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {features.map((f, i) => (
+            <motion.div
+              key={f.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.5 }}
+              className="group flex items-center gap-4 rounded-2xl p-5 shadow-card hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              style={{ background: "color-mix(in oklab, #FDFAF5 88%, transparent)", border: "1px solid color-mix(in oklab, #D9C4A0 30%, transparent)" }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-gradient-saffron grid place-items-center shadow-glow group-hover:scale-110 transition-transform shrink-0">
+                <f.icon className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-medium">{f.label}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -493,7 +639,7 @@ export function Rooms() {
                   View Room
                 </a>
                 <a
-                  href="/rooms"
+                  href="/contact#booking"
                   className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold"
                 >
                   Book Now
@@ -576,7 +722,7 @@ export function Halls() {
                   </div>
                 </div>
                 <a
-                  href="/rooms"
+                  href="/contact#booking"
                   className="btn-saffron rounded-full px-6 py-3 text-sm font-semibold inline-flex items-center gap-2"
                 >
                   Reserve Hall <ChevronRight className="w-4 h-4" />
@@ -592,15 +738,15 @@ export function Halls() {
 
 /* ----------------------------- GALLERY ---------------------------- */
 const galleryItems = [
-  { src: mandirImage, alt: "Mandir", span: "row-span-2" },
+  { src: "/assets-custom/mandir-wide.jpeg", alt: "Sakshi Dham Mandir", span: "row-span-2" },
   { src: roomDeluxeImage, alt: "Deluxe room", span: "" },
   { src: hallImage, alt: "Event hall", span: "" },
-  { src: washroomImage, alt: "Washroom", span: "row-span-2" },
-  { src: hallImage, alt: "Maha satsang hall", span: "col-span-2" },
-  { src: roomSuite, alt: "Premium suite", span: "" },
-  { src: exterior, alt: "Exterior", span: "" },
-  { src: flowers, alt: "Diya and marigold", span: "" },
+  { src: "/assets-custom/mandir-deity-portrait.jpeg", alt: "Mandir deity", span: "row-span-2" },
+  { src: "/assets-custom/hall-2.jpeg", alt: "Maha satsang hall", span: "col-span-2" },
+  { src: washroomImage, alt: "Washroom", span: "" },
   { src: roomFamilyImage, alt: "Family room", span: "" },
+  { src: "/assets-custom/room-deluxe-new.png", alt: "Deluxe room view", span: "" },
+  { src: "/assets-custom/hall-maha-new.png", alt: "Maha hall interior", span: "" },
 ];
 
 export function Gallery() {
@@ -1488,7 +1634,7 @@ function LuxuryRoomsExperience() {
                       Details
                     </button>
                     <a
-                      href="#booking"
+                      href="/contact#booking"
                       className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold"
                     >
                       Book
@@ -1520,7 +1666,7 @@ function LuxuryRoomsExperience() {
             Vrindavan itineraries.
           </p>
           <a
-            href="#booking"
+            href="/contact#booking"
             className="mt-8 inline-flex btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold"
           >
             Reserve Your Stay
@@ -1672,7 +1818,7 @@ function LuxuryRoomsExperience() {
                 </div>
               </div>
               <a
-                href="#booking"
+                href="/contact#booking"
                 onClick={() => setActiveRoom(null)}
                 className="mt-7 inline-flex btn-saffron rounded-full px-7 py-3 text-sm font-semibold"
               >
@@ -1828,7 +1974,7 @@ function LuxuryHallsExperience() {
                     events.
                   </p>
                   <a
-                    href="#booking"
+                    href="/contact#booking"
                     className="mt-5 inline-flex btn-saffron rounded-full px-6 py-3 text-sm font-semibold"
                   >
                     Reserve Hall
@@ -1863,7 +2009,7 @@ function LuxuryHallsExperience() {
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{text}</p>
                 <a
-                  href="#booking"
+                  href="/contact#booking"
                   className="mt-6 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
                 >
                   Enquire
@@ -1966,7 +2112,7 @@ function LuxuryHallsExperience() {
             hall and package.
           </p>
           <a
-            href="#booking"
+            href="/contact#booking"
             className="mt-8 inline-flex btn-saffron rounded-full px-8 py-4 text-sm font-semibold"
           >
             Start Hall Enquiry
@@ -1984,16 +2130,15 @@ export function RoomsPage() {
         eyebrow="Rooms & Stay"
         title={
           <>
-            Room <span className="text-gradient-gold italic">Booking</span>
+            Room <span className="text-gradient-gold italic">Collection</span>
           </>
         }
         subtitle="Choose peaceful rooms designed for devotees, families, and spiritual seekers visiting Vrindavan."
         image={roomDeluxeImage}
-        primaryLabel="Book a Room"
-        primaryHref="#booking"
+        primaryLabel="View Rooms"
+        primaryHref="#rooms"
       />
       <LuxuryRoomsExperience />
-      <Booking />
     </PageShell>
   );
 }
@@ -2005,16 +2150,15 @@ export function HallsPage() {
         eyebrow="Satsang & Events"
         title={
           <>
-            Hall <span className="text-gradient-gold italic">Booking</span>
+            Hall <span className="text-gradient-gold italic">Collection</span>
           </>
         }
         subtitle="Premium halls for satsang, kirtan, pravachan, meditation gatherings, and spiritual events."
         image={hallImage}
-        primaryLabel="Reserve Hall"
-        primaryHref="#booking"
+        primaryLabel="View Halls"
+        primaryHref="#halls"
       />
       <LuxuryHallsExperience />
-      <Booking />
     </PageShell>
   );
 }
@@ -2050,21 +2194,11 @@ export function AboutPage() {
           </>
         }
         subtitle="A spiritual home in Vrindavan shaped by seva, devotion, peaceful hospitality, and sacred gathering."
-        image={exterior}
+        image="/assets-custom/mandir-wide.jpeg"
         primaryLabel="Plan Your Stay"
         primaryHref="/rooms"
       />
       <About />
-      <section className="relative px-4 sm:px-6 pb-24">
-        <div className="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-10 shadow-soft">
-          <h2 className="font-display text-4xl sm:text-5xl font-medium">Our mission</h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed">
-            Sakshi Dham International welcomes devotees with clean rooms, graceful halls, quiet
-            corners for prayer, and a warm seva team. Our mission is to make every visit to
-            Vrindavan feel peaceful, dignified, and close to the spirit of bhakti.
-          </p>
-        </div>
-      </section>
     </PageShell>
   );
 }
