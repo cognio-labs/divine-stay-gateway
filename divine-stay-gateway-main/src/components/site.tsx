@@ -1,6 +1,6 @@
 import { useLocation } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   Menu,
   X,
@@ -79,99 +79,115 @@ export function HomePage() {
 /* ----------------------------- NAVBAR ----------------------------- */
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-background/95 border-b border-border/70 shadow-card backdrop-blur-xl transition-all duration-500">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex items-center justify-between px-1 sm:px-2 py-3 transition-all duration-500">
-          <a href="/" className="flex items-center gap-3 group">
-            <img
-              src={siteLogo}
-              alt="Sakshi Dham logo"
-              width={40}
-              height={40}
-              decoding="async"
-              className="h-10 w-10 rounded-full object-contain bg-white shadow-glow"
-            />
-            <div className="leading-tight">
-              <div className="font-display text-lg sm:text-xl font-semibold tracking-tight">
-                Sakshi Dham
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                International
-              </div>
+    <header
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
+        scrolled
+          ? "top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full glass shadow-soft py-2.5 px-6"
+          : "top-0 w-full bg-transparent py-5 px-6 border-b border-transparent"
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        <a href="/" className="flex items-center gap-3 group">
+          <img
+            src={siteLogo}
+            alt="Sakshi Dham logo"
+            width={40}
+            height={40}
+            decoding="async"
+            className="h-10 w-10 rounded-full object-contain bg-white shadow-card"
+          />
+          <div className="leading-tight">
+            <div className="font-display text-lg sm:text-xl font-semibold tracking-tight text-foreground">
+              Sakshi Dham
             </div>
-          </a>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              International
+            </div>
+          </div>
+        </a>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {nav.map((n) => {
-              const active = currentPath === n.href;
-              return (
-                <a
-                  key={n.href}
-                  href={n.href}
-                  className={`text-sm font-semibold relative group transition ${
-                    active ? "text-saffron-deep" : "text-foreground/80 hover:text-foreground"
+        <nav className="hidden lg:flex items-center gap-8">
+          {nav.map((n) => {
+            const active = currentPath === n.href;
+            return (
+              <a
+                key={n.href}
+                href={n.href}
+                className={`text-sm font-semibold relative group transition ${
+                  active ? "text-primary" : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                {n.label}
+                <span
+                  className={`absolute -bottom-1 left-0 w-full h-[2px] bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-out ${
+                    active ? "scale-x-100" : "group-hover:scale-x-100"
                   }`}
-                >
-                  {n.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-saffron origin-left transform scale-x-0 transition-transform duration-300 ease-out ${
-                      active ? "scale-x-100" : "group-hover:scale-x-100"
-                    }`}
-                  />
-                </a>
-              );
-            })}
-          </nav>
+                />
+              </a>
+            );
+          })}
+        </nav>
 
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
+          <a
+            href="/contact#booking"
+            className="hidden sm:inline-flex btn-saffron px-6 py-2.5 text-sm font-semibold group items-center gap-1.5"
+          >
+            <span>Book Now</span>
+            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" />
+          </a>
+          <button
+            className="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-border bg-white/40"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="lg:hidden mt-2 glass rounded-2xl p-4 shadow-soft"
+        >
+          <div className="flex flex-col gap-1">
+            {nav.map((n) => (
+              <a
+                key={n.href}
+                href={n.href}
+                onClick={() => setOpen(false)}
+                className={`px-3 py-2.5 rounded-xl text-sm font-semibold transition ${
+                  currentPath === n.href ? "bg-accent text-primary" : "hover:bg-accent/60"
+                }`}
+              >
+                {n.label}
+              </a>
+            ))}
             <a
               href="/contact#booking"
-              className="hidden sm:inline-flex btn-saffron rounded-full px-5 py-2.5 text-sm font-semibold animate-pulse-glow"
+              onClick={() => setOpen(false)}
+              className="mt-2 btn-saffron py-3 text-center text-sm font-semibold"
             >
               Book Now
             </a>
-            <button
-              className="lg:hidden w-10 h-10 grid place-items-center rounded-full glass"
-              onClick={() => setOpen(!open)}
-              aria-label="Menu"
-            >
-              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
-        </div>
-
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="lg:hidden mt-2 glass rounded-2xl p-4 shadow-soft"
-          >
-            <div className="flex flex-col gap-1">
-              {nav.map((n) => (
-                <a
-                  key={n.href}
-                  href={n.href}
-                  onClick={() => setOpen(false)}
-                  className={`px-3 py-2.5 rounded-xl text-sm font-semibold transition ${currentPath === n.href ? "bg-accent text-saffron-deep" : "hover:bg-accent/60"}`}
-                >
-                  {n.label}
-                </a>
-              ))}
-              <a
-                href="/contact#booking"
-                onClick={() => setOpen(false)}
-                className="mt-2 btn-saffron rounded-xl px-4 py-3 text-center text-sm font-semibold"
-              >
-                Book Now
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </div>
+        </motion.div>
+      )}
     </header>
   );
 }
@@ -739,18 +755,32 @@ export function Halls() {
 
 /* ----------------------------- GALLERY ---------------------------- */
 const galleryItems = [
-  { src: "/assets-custom/mandir-wide.jpeg", alt: "Sakshi Dham Mandir", span: "row-span-2" },
-  { src: roomDeluxeImage, alt: "Deluxe room", span: "" },
-  { src: hallImage, alt: "Event hall", span: "" },
-  { src: "/assets-custom/mandir-deity-portrait.jpeg", alt: "Mandir deity", span: "row-span-2" },
-  { src: "/assets-custom/hall-2.jpeg", alt: "Maha satsang hall", span: "col-span-2" },
-  { src: washroomImage, alt: "Washroom", span: "" },
-  { src: roomFamilyImage, alt: "Family room", span: "" },
-  { src: "/assets-custom/room-deluxe-new.png", alt: "Deluxe room view", span: "" },
-  { src: "/assets-custom/hall-maha-new.png", alt: "Maha hall interior", span: "" },
+  { src: "/assets-custom/mandir-wide.jpeg", alt: "Sakshi Dham Mandir", category: "Mandir", span: "row-span-2 md:col-span-2" },
+  { src: roomDeluxeImage, alt: "Deluxe room", category: "Rooms", span: "" },
+  { src: hallImage, alt: "Event hall", category: "Halls", span: "" },
+  { src: "/assets-custom/mandir-deity-portrait.jpeg", alt: "Mandir deity", category: "Mandir", span: "row-span-2" },
+  { src: "/assets-custom/hall-2.jpeg", alt: "Maha satsang hall", category: "Halls", span: "md:col-span-2" },
+  { src: washroomImage, alt: "Washroom", category: "Rooms", span: "" },
+  { src: roomFamilyImage, alt: "Family room", category: "Rooms", span: "" },
+  { src: "/assets-custom/room-deluxe-new.png", alt: "Deluxe room view", category: "Rooms", span: "" },
+  { src: "/assets-custom/hall-maha-new.png", alt: "Maha hall interior", category: "Halls", span: "" },
 ];
 
 export function Gallery() {
+  const [filter, setFilter] = useState("All");
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
+  const categories = ["All", "Rooms", "Halls", "Mandir"];
+  const filteredItems = filter === "All" ? galleryItems : galleryItems.filter(item => item.category === filter);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxImage(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section id="gallery" className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
       <SectionHeader
@@ -763,30 +793,84 @@ export function Gallery() {
         subtitle="A glimpse into the spaces, rituals, and light that make Sakshi Dham a home away from home."
       />
 
-      <div className="mt-14 max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] sm:auto-rows-[220px] gap-3 sm:gap-4">
-        {galleryItems.map((g, i) => (
-          <motion.figure
-            key={i}
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: (i % 6) * 0.06, duration: 0.7 }}
-            className={`relative overflow-hidden rounded-2xl group premium-card ${g.span}`}
+      <div className="mt-10 flex flex-wrap justify-center gap-2">
+        {categories.map((item) => (
+          <button
+            key={item}
+            type="button"
+            onClick={() => setFilter(item)}
+            className={
+              filter === item
+                ? "btn-saffron rounded-full px-5 py-2.5 text-sm font-semibold"
+                : "glass rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
+            }
           >
-            <img
-              src={g.src}
-              alt={g.alt}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <figcaption className="absolute bottom-3 left-3 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition">
-              {g.alt}
-            </figcaption>
-          </motion.figure>
+            {item}
+          </button>
         ))}
       </div>
+
+      <motion.div 
+        layout
+        className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[240px]"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredItems.map((g, i) => (
+            <motion.figure
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.35 }}
+              key={g.src}
+              onClick={() => setLightboxImage(g.src)}
+              className={`relative overflow-hidden rounded-2xl group premium-card cursor-pointer ${g.span}`}
+            >
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4" />
+              <figcaption className="absolute bottom-4 left-4 text-white text-sm font-display font-medium opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
+                {g.alt}
+              </figcaption>
+            </motion.figure>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+          >
+            <button
+              onClick={() => setLightboxImage(null)}
+              className="absolute top-6 right-6 text-white/80 hover:text-white transition w-12 h-12 rounded-full glass flex items-center justify-center"
+              aria-label="Close Lightbox"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              src={lightboxImage}
+              alt="Expanded view"
+              className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-soft cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -1316,6 +1400,7 @@ export function PageHero({
   image,
   primaryLabel,
   primaryHref,
+  layout = "centered",
 }: {
   eyebrow: string;
   title: React.ReactNode;
@@ -1323,36 +1408,106 @@ export function PageHero({
   image: string;
   primaryLabel: string;
   primaryHref: string;
+  layout?: "centered" | "split" | "left";
 }) {
+  if (layout === "split") {
+    return (
+      <section className="relative min-h-[75vh] flex items-center pt-36 pb-24 bg-background overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-center relative z-10">
+          <motion.div {...fadeUp} className="text-left">
+            <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-xs uppercase tracking-[0.25em] text-primary font-semibold mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-primary" /> {eyebrow}
+            </p>
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
+              {title}
+            </h1>
+            <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              {subtitle}
+            </p>
+            <div className="mt-8">
+              <a
+                href={primaryHref}
+                className="btn-saffron px-8 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
+              >
+                {primaryLabel} <ChevronRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative h-[480px] rounded-3xl overflow-hidden shadow-soft border border-border"
+          >
+            <img src={image} alt="" className="w-full h-full object-cover" />
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "left") {
+    return (
+      <section className="relative min-h-[68vh] pt-40 pb-24 flex items-center overflow-hidden">
+        <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-left text-white">
+          <motion.p
+            {...fadeUp}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-xs uppercase tracking-[0.25em] text-white/90"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-saffron" /> {eyebrow}
+          </motion.p>
+          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-white max-w-3xl">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-white/90 leading-relaxed text-base sm:text-lg">
+            {subtitle}
+          </p>
+          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.18 }} className="mt-8">
+            <a
+              href={primaryHref}
+              className="btn-saffron px-8 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
+            >
+              {primaryLabel} <ChevronRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="relative min-h-[58svh] pt-32 sm:pt-36 flex items-center overflow-hidden">
-      <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 page-hero-overlay" />
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center text-white">
+    <section className="relative pt-32 pb-20 text-center overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.p
           {...fadeUp}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-xs uppercase tracking-[0.25em] text-white/90"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-xs uppercase tracking-[0.25em] text-primary font-semibold mb-6"
         >
-          <Sparkles className="w-3.5 h-3.5 text-saffron" /> {eyebrow}
+          <Sparkles className="w-3.5 h-3.5 text-primary" /> {eyebrow}
         </motion.p>
         <motion.h1
           {...fadeUp}
-          transition={{ ...fadeUp.transition, delay: 0.06 }}
-          className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-white"
+          transition={{ ...fadeUp.transition, delay: 0.05 }}
+          className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1]"
         >
           {title}
         </motion.h1>
         <motion.p
           {...fadeUp}
-          transition={{ ...fadeUp.transition, delay: 0.12 }}
-          className="mt-5 max-w-2xl mx-auto text-white/85 leading-relaxed"
+          transition={{ ...fadeUp.transition, delay: 0.1 }}
+          className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
         >
           {subtitle}
         </motion.p>
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.18 }} className="mt-8">
+        <motion.div
+          {...fadeUp}
+          transition={{ ...fadeUp.transition, delay: 0.15 }}
+          className="mt-10 flex items-center justify-center gap-4"
+        >
           <a
             href={primaryHref}
-            className="btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
+            className="btn-saffron px-8 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
           >
             {primaryLabel} <ChevronRight className="w-4 h-4" />
           </a>
@@ -1362,49 +1517,16 @@ export function PageHero({
   );
 }
 
-const luxuryRooms = [
-  // DELUXE CATEGORY
+const roomData = [
   {
-    category: "Deluxe",
-    name: "Deluxe Devotee Room",
-    img: roomDeluxeImage,
-    price: "1,499",
-    capacity: "2-4 Guests",
-    badge: "Most Booked",
-    description:
-      "A peaceful AC room with attached washroom, warm bedding, and a quiet atmosphere for families and devotees.",
-    amenities: ["AC", "Attached Washroom", "Hot Water", "Daily Seva Support"],
-    policies: [
-      "Check-in from 12:00 PM",
-      "Quiet hours after 10:00 PM",
-      "Photo ID required at arrival",
-    ],
-  },
-  {
-    category: "Deluxe",
-    name: "Deluxe Comfort Room",
-    img: "/assets-custom/room-deluxe-new.png",
-    price: "1,699",
+    category: "Standard",
+    name: "Standard Ashram Room",
+    img: roomStandardImage,
+    price: "1,299",
     capacity: "2 Guests",
-    badge: "Popular Choice",
+    badge: "Most Popular",
     description:
-      "Modern deluxe AC room offering gorgeous garden views, comfortable double bed, and clean attached washroom.",
-    amenities: ["AC", "Attached Washroom", "Hot Water", "Garden View"],
-    policies: [
-      "Check-in from 12:00 PM",
-      "No smoking allowed",
-      "Vrindavan local guidelines apply",
-    ],
-  },
-  {
-    category: "Deluxe",
-    name: "Deluxe Twin Room",
-    img: roomDeluxeStock,
-    price: "1,599",
-    capacity: "2 Guests",
-    badge: "Pilgrim Friendly",
-    description:
-      "Features two separate single beds, AC, hot water, and modern facilities. Perfect for friends or co-travelers.",
+      "A simple, clean, and peaceful room perfect for individuals or pairs seeking a quiet spiritual stay.",
     amenities: ["AC", "Attached Washroom", "Twin Beds", "Hot Water"],
     policies: [
       "Check-in from 12:00 PM",
