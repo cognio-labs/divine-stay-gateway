@@ -25,17 +25,17 @@ import {
 } from "lucide-react";
 
 import heroHall from "@/assets/hero-hall.jpg";
-import roomDeluxe from "@/assets/room-deluxe.jpg";
-import roomFamily from "@/assets/room-family.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
-import hallMaha from "@/assets/hall-maha.jpg";
-import hallEvent from "@/assets/hall-event.jpg";
-import bathroom from "@/assets/bathroom.jpg";
-import mandir from "@/assets/mandir.jpg";
 import exterior from "@/assets/exterior.jpg";
 import flowers from "@/assets/flowers.jpg";
 
 const gurujiImage = "/guruji.png";
+const siteLogo = "https://sciencedivine.org/wp-content/uploads/2023/07/cropped-SD_logo.png";
+const mandirImage = "/assets-custom/mandir-new.jpeg";
+const roomDeluxeImage = "/assets-custom/room-1.jpeg";
+const roomFamilyImage = "/assets-custom/room-2.jpeg";
+const hallImage = "/assets-custom/hall-1.jpeg";
+const washroomImage = "/assets-custom/washroom-1.jpeg";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -73,10 +73,12 @@ export function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 bg-background/95 border-b border-border/70 shadow-card backdrop-blur-xl transition-all duration-500">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-center justify-between px-1 sm:px-2 py-3 transition-all duration-500">
-          <a href="/" className="flex items-center gap-2 group">
-            <div className="relative w-9 h-9 rounded-full bg-gradient-saffron grid place-items-center shadow-glow">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+          <a href="/" className="flex items-center gap-3 group">
+            <img
+              src={siteLogo}
+              alt="Sakshi Dham logo"
+              className="h-10 w-10 rounded-full object-contain bg-white shadow-glow"
+            />
             <div className="leading-tight">
               <div className="font-display text-lg sm:text-xl font-semibold tracking-tight">
                 Sakshi Dham
@@ -394,14 +396,14 @@ export function About() {
 const rooms = [
   {
     name: "Deluxe Room",
-    img: roomDeluxe,
+    img: roomDeluxeImage,
     price: "1,499",
     features: ["Double Bed", "Attached Bathroom", "AC", "Hot Water"],
     tag: "Most Booked",
   },
   {
     name: "Family Room",
-    img: roomFamily,
+    img: roomFamilyImage,
     price: "2,499",
     features: ["3 Beds", "Attached Bathroom", "AC", "Spacious"],
     tag: "Best for Families",
@@ -470,7 +472,7 @@ export function Rooms() {
                   href="/rooms"
                   className="flex-1 text-center rounded-full border border-border py-2.5 text-sm font-semibold hover:bg-accent transition"
                 >
-                  View Details
+                  View Room
                 </a>
                 <a
                   href="/rooms"
@@ -491,14 +493,14 @@ export function Rooms() {
 const halls = [
   {
     name: "Maha Satsang Hall",
-    img: hallMaha,
+    img: hallImage,
     capacity: "300 People",
     use: "Satsang, Kirtan, Pravachan",
     price: "11,000",
   },
   {
     name: "Spiritual Event Hall",
-    img: hallEvent,
+    img: hallImage,
     capacity: "150 People",
     use: "Meditation, Gatherings, Events",
     price: "7,500",
@@ -571,15 +573,15 @@ export function Halls() {
 
 /* ----------------------------- GALLERY ---------------------------- */
 const galleryItems = [
-  { src: mandir, alt: "Mandir", span: "row-span-2" },
-  { src: roomDeluxe, alt: "Deluxe room", span: "" },
-  { src: hallEvent, alt: "Event hall", span: "" },
-  { src: bathroom, alt: "Bathroom", span: "row-span-2" },
-  { src: hallMaha, alt: "Maha satsang hall", span: "col-span-2" },
+  { src: mandirImage, alt: "Mandir", span: "row-span-2" },
+  { src: roomDeluxeImage, alt: "Deluxe room", span: "" },
+  { src: hallImage, alt: "Event hall", span: "" },
+  { src: washroomImage, alt: "Washroom", span: "row-span-2" },
+  { src: hallImage, alt: "Maha satsang hall", span: "col-span-2" },
   { src: roomSuite, alt: "Premium suite", span: "" },
   { src: exterior, alt: "Exterior", span: "" },
   { src: flowers, alt: "Diya and marigold", span: "" },
-  { src: roomFamily, alt: "Family room", span: "" },
+  { src: roomFamilyImage, alt: "Family room", span: "" },
 ];
 
 export function Gallery() {
@@ -645,8 +647,8 @@ export function Booking() {
 
   return (
     <section id="booking" className="relative py-24 sm:py-32 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
-        <motion.div {...fadeUp}>
+      <div className="max-w-3xl mx-auto">
+        <motion.div {...fadeUp} className="text-center">
           <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
             Reserve Your Stay
           </p>
@@ -657,31 +659,13 @@ export function Booking() {
             Share a few details and our seva team will confirm your reservation within a few hours.
             Every booking is treated with warmth and grace.
           </p>
-
-          <div className="mt-8 space-y-4">
-            {[
-              { icon: Phone, label: "+91 98765 43210", sub: "Call anytime, 8am–9pm" },
-              { icon: MessageCircle, label: "WhatsApp us", sub: "Instant confirmations" },
-              { icon: MapPin, label: "Vrindavan, Uttar Pradesh", sub: "India" },
-            ].map((c) => (
-              <div key={c.label} className="flex items-center gap-4 glass rounded-2xl p-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-saffron grid place-items-center shadow-glow">
-                  <c.icon className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="font-semibold">{c.label}</div>
-                  <div className="text-xs text-muted-foreground">{c.sub}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         <motion.form
           {...fadeUp}
           transition={{ ...fadeUp.transition, delay: 0.1 }}
           onSubmit={onSubmit}
-          className="glass rounded-3xl p-6 sm:p-8 shadow-soft"
+          className="mt-10 glass rounded-3xl p-6 sm:p-8 shadow-soft"
         >
           <div className="grid sm:grid-cols-2 gap-4">
             <Field
@@ -939,9 +923,11 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-saffron grid place-items-center shadow-glow">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+            <img
+              src={siteLogo}
+              alt="Sakshi Dham logo"
+              className="h-12 w-12 rounded-full object-contain bg-white shadow-glow"
+            />
             <div>
               <div className="font-display text-xl font-semibold text-white">
                 Sakshi Dham International
@@ -1125,7 +1111,7 @@ export function RoomsPage() {
           </>
         }
         subtitle="Choose peaceful rooms designed for devotees, families, and spiritual seekers visiting Vrindavan."
-        image={roomSuite}
+        image={roomDeluxeImage}
         primaryLabel="Book a Room"
         primaryHref="#booking"
       />
@@ -1146,7 +1132,7 @@ export function HallsPage() {
           </>
         }
         subtitle="Premium halls for satsang, kirtan, pravachan, meditation gatherings, and spiritual events."
-        image={hallMaha}
+        image={hallImage}
         primaryLabel="Reserve Hall"
         primaryHref="#booking"
       />
@@ -1167,7 +1153,7 @@ export function GalleryPage() {
           </>
         }
         subtitle="Explore the rooms, halls, mandir spaces, flowers, light, and atmosphere of Sakshi Dham International."
-        image={mandir}
+        image={mandirImage}
         primaryLabel="View Stay Options"
         primaryHref="/rooms"
       />
