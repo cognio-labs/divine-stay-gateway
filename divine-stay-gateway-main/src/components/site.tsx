@@ -111,12 +111,12 @@ export function Navbar() {
           />
           <div className="leading-tight">
             <div className={`font-display text-lg sm:text-xl font-semibold tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-foreground" : "text-white drop-shadow-sm"
+              useSolidNavbar ? "text-foreground" : "text-white drop-shadow-sm"
             }`}>
               Sakshi Dham
             </div>
             <div className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-              scrolled ? "text-muted-foreground" : "text-white/70"
+              useSolidNavbar ? "text-muted-foreground" : "text-white/70"
             }`}>
               International
             </div>
@@ -2598,3 +2598,4 @@ export function ContactPage() {
     </PageShell>
   );
 }
+
