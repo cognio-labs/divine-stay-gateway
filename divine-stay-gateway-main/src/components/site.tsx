@@ -72,9 +72,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-background/95 border-b border-border/70 shadow-card backdrop-blur-xl transition-all duration-500">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div
-          className="flex items-center justify-between px-1 sm:px-2 py-3 transition-all duration-500"
-        >
+        <div className="flex items-center justify-between px-1 sm:px-2 py-3 transition-all duration-500">
           <a href="/" className="flex items-center gap-2 group">
             <div className="relative w-9 h-9 rounded-full bg-gradient-saffron grid place-items-center shadow-glow">
               <Sparkles className="w-4 h-4 text-white" />
@@ -89,7 +87,7 @@ export function Navbar() {
             </div>
           </a>
 
-<nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {nav.map((n) => {
               const active = currentPath === n.href;
               return (
@@ -231,9 +229,7 @@ export function Hero() {
           className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[1.05] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
         >
           Sakshi Dham
-          <span className="block text-gradient-gold italic font-semibold">
-            International
-          </span>
+          <span className="block text-gradient-gold italic font-semibold">International</span>
         </motion.h1>
 
         <motion.p
@@ -251,8 +247,8 @@ export function Hero() {
           transition={{ delay: 0.75, duration: 0.9 }}
           className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-white/75 leading-relaxed"
         >
-          Experience divine peace, comfortable stay, satsang halls, and spiritual
-          energy in the heart of Vrindavan.
+          Experience divine peace, comfortable stay, satsang halls, and spiritual energy in the
+          heart of Vrindavan.
         </motion.p>
 
         <motion.div
@@ -275,7 +271,6 @@ export function Hero() {
           </a>
         </motion.div>
       </motion.div>
-
     </section>
   );
 }
@@ -333,16 +328,26 @@ export function About() {
             />
           </div>
           <div className="absolute -bottom-8 -right-4 sm:-right-8 w-40 sm:w-52 rounded-2xl overflow-hidden shadow-soft ring-4 ring-background rotate-3">
-            <img src={flowers} alt="Diya and marigold" loading="lazy" className="w-full h-full object-cover" />
+            <img
+              src={flowers}
+              alt="Diya and marigold"
+              loading="lazy"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="absolute -top-6 -left-4 glass rounded-2xl px-4 py-3 shadow-card">
             <div className="text-2xl font-display font-semibold text-gradient-gold">15+</div>
-            <div className="text-[11px] uppercase tracking-widest text-muted-foreground">Years of Seva</div>
+            <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
+              Years of Seva
+            </div>
           </div>
         </motion.div>
 
         <div>
-          <motion.p {...fadeUp} className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+          <motion.p
+            {...fadeUp}
+            className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium"
+          >
             About the Ashram
           </motion.p>
           <motion.h2
@@ -358,8 +363,8 @@ export function About() {
             className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Sakshi Dham International is a spiritual ashram in Vrindavan offering peaceful
-            accommodation, satsang halls, and divine surroundings for devotees, families,
-            and spiritual seekers.
+            accommodation, satsang halls, and divine surroundings for devotees, families, and
+            spiritual seekers.
           </motion.p>
 
           <div className="mt-10 grid sm:grid-cols-2 gap-3">
@@ -415,7 +420,11 @@ export function Rooms() {
     <section id="rooms" className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
       <SectionHeader
         eyebrow="Rooms & Stay"
-        title={<>Rest in <span className="text-gradient-gold italic">divine comfort</span></>}
+        title={
+          <>
+            Rest in <span className="text-gradient-gold italic">divine comfort</span>
+          </>
+        }
         subtitle="Thoughtfully designed rooms for devotees, families, and seekers — with all modern comforts wrapped in ashram serenity."
       />
 
@@ -501,7 +510,11 @@ export function Halls() {
     <section id="halls" className="relative py-24 sm:py-32 px-4 sm:px-6">
       <SectionHeader
         eyebrow="Satsang & Event Halls"
-        title={<>Sacred spaces for <span className="text-gradient-gold italic">gathering & grace</span></>}
+        title={
+          <>
+            Sacred spaces for <span className="text-gradient-gold italic">gathering & grace</span>
+          </>
+        }
         subtitle="Grand halls with ornate detailing, warm lighting, and reverent acoustics — designed for kirtan, pravachan, and meditative gatherings."
       />
 
@@ -533,9 +546,7 @@ export function Halls() {
                 </span>
                 <span className="glass-dark rounded-full px-3 py-1">{h.use}</span>
               </div>
-              <h3 className="mt-4 text-3xl sm:text-4xl font-display font-semibold">
-                {h.name}
-              </h3>
+              <h3 className="mt-4 text-3xl sm:text-4xl font-display font-semibold">{h.name}</h3>
               <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <div className="text-xs text-white/70 uppercase tracking-widest">Starting at</div>
@@ -576,7 +587,11 @@ export function Gallery() {
     <section id="gallery" className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
       <SectionHeader
         eyebrow="Gallery"
-        title={<>Moments of <span className="text-gradient-gold italic">peace & devotion</span></>}
+        title={
+          <>
+            Moments of <span className="text-gradient-gold italic">peace & devotion</span>
+          </>
+        }
         subtitle="A glimpse into the spaces, rituals, and light that make Sakshi Dham a home away from home."
       />
 
@@ -669,11 +684,42 @@ export function Booking() {
           className="glass rounded-3xl p-6 sm:p-8 shadow-soft"
         >
           <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="Full Name" value={form.name} onChange={(v) => setForm({ ...form, name: v })} required />
-            <Field label="Phone" type="tel" value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} required />
-            <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} className="sm:col-span-2" />
-            <Field label="Check-in" type="date" value={form.checkin} onChange={(v) => setForm({ ...form, checkin: v })} required icon={Calendar} />
-            <Field label="Check-out" type="date" value={form.checkout} onChange={(v) => setForm({ ...form, checkout: v })} required icon={Calendar} />
+            <Field
+              label="Full Name"
+              value={form.name}
+              onChange={(v) => setForm({ ...form, name: v })}
+              required
+            />
+            <Field
+              label="Phone"
+              type="tel"
+              value={form.phone}
+              onChange={(v) => setForm({ ...form, phone: v })}
+              required
+            />
+            <Field
+              label="Email"
+              type="email"
+              value={form.email}
+              onChange={(v) => setForm({ ...form, email: v })}
+              className="sm:col-span-2"
+            />
+            <Field
+              label="Check-in"
+              type="date"
+              value={form.checkin}
+              onChange={(v) => setForm({ ...form, checkin: v })}
+              required
+              icon={Calendar}
+            />
+            <Field
+              label="Check-out"
+              type="date"
+              value={form.checkout}
+              onChange={(v) => setForm({ ...form, checkout: v })}
+              required
+              icon={Calendar}
+            />
             <div>
               <label className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
                 Room / Hall
@@ -690,7 +736,12 @@ export function Booking() {
                 <option>Spiritual Event Hall</option>
               </select>
             </div>
-            <Field label="Guests" type="number" value={form.guests} onChange={(v) => setForm({ ...form, guests: v })} />
+            <Field
+              label="Guests"
+              type="number"
+              value={form.guests}
+              onChange={(v) => setForm({ ...form, guests: v })}
+            />
             <div className="sm:col-span-2">
               <label className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
                 Special Request
@@ -780,7 +831,11 @@ export function Testimonials() {
     <section className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
       <SectionHeader
         eyebrow="Devotee Voices"
-        title={<>Words from our <span className="text-gradient-gold italic">extended family</span></>}
+        title={
+          <>
+            Words from our <span className="text-gradient-gold italic">extended family</span>
+          </>
+        }
       />
 
       <div className="mt-14 max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
@@ -814,15 +869,29 @@ export function Testimonials() {
 export function Contact() {
   const cards = [
     { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
-    { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: "https://wa.me/919876543210" },
-    { icon: Mail, label: "Email", value: "info@sakshidham.org", href: "mailto:info@sakshidham.org" },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "Chat with us",
+      href: "https://wa.me/919876543210",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "info@sakshidham.org",
+      href: "mailto:info@sakshidham.org",
+    },
     { icon: MapPin, label: "Location", value: "Vrindavan, U.P.", href: "#map" },
   ];
   return (
     <section id="contact" className="relative py-24 sm:py-32 px-4 sm:px-6">
       <SectionHeader
         eyebrow="Contact"
-        title={<>Come visit <span className="text-gradient-gold italic">Sakshi Dham</span></>}
+        title={
+          <>
+            Come visit <span className="text-gradient-gold italic">Sakshi Dham</span>
+          </>
+        }
         subtitle="Vrindavan, Uttar Pradesh — India"
       />
 
@@ -845,7 +914,10 @@ export function Contact() {
           ))}
         </div>
 
-        <div id="map" className="rounded-3xl overflow-hidden shadow-soft ring-1 ring-border h-[420px] lg:h-full min-h-[420px]">
+        <div
+          id="map"
+          className="rounded-3xl overflow-hidden shadow-soft ring-1 ring-border h-[420px] lg:h-full min-h-[420px]"
+        >
           <iframe
             title="Sakshi Dham location"
             src="https://www.google.com/maps?q=Vrindavan,Uttar+Pradesh,India&output=embed"
@@ -871,13 +943,17 @@ export function Footer() {
               <Sparkles className="w-4 h-4 text-white" />
             </div>
             <div>
-              <div className="font-display text-xl font-semibold text-white">Sakshi Dham International</div>
-              <div className="text-[10px] uppercase tracking-[0.25em] text-white/50">Vrindavan · India</div>
+              <div className="font-display text-xl font-semibold text-white">
+                Sakshi Dham International
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-white/50">
+                Vrindavan · India
+              </div>
             </div>
           </div>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
-            A peaceful spiritual ashram offering divine stay, satsang halls, and warm hospitality
-            in the sacred land of Vrindavan.
+            A peaceful spiritual ashram offering divine stay, satsang halls, and warm hospitality in
+            the sacred land of Vrindavan.
           </p>
           <div className="mt-6 flex gap-3">
             {[Instagram, Facebook, Youtube].map((Ic, i) => (
@@ -894,7 +970,9 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="text-xs uppercase tracking-widest text-saffron/90 font-semibold">Quick Links</div>
+          <div className="text-xs uppercase tracking-widest text-saffron/90 font-semibold">
+            Quick Links
+          </div>
           <ul className="mt-4 space-y-2 text-sm">
             {nav.map((n) => (
               <li key={n.href}>
@@ -907,7 +985,9 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="text-xs uppercase tracking-widest text-saffron/90 font-semibold">Contact</div>
+          <div className="text-xs uppercase tracking-widest text-saffron/90 font-semibold">
+            Contact
+          </div>
           <ul className="mt-4 space-y-2 text-sm text-white/70">
             <li>Vrindavan, Uttar Pradesh</li>
             <li>+91 98765 43210</li>
@@ -938,7 +1018,10 @@ export function SectionHeader({
 }) {
   return (
     <div className="max-w-3xl mx-auto text-center">
-      <motion.p {...fadeUp} className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+      <motion.p
+        {...fadeUp}
+        className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium"
+      >
         {eyebrow}
       </motion.p>
       <motion.h2
@@ -998,7 +1081,10 @@ export function PageHero({
       <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#241811]/80 via-[#3a2718]/62 to-background" />
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center text-white">
-        <motion.p {...fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs uppercase tracking-[0.25em]">
+        <motion.p
+          {...fadeUp}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs uppercase tracking-[0.25em]"
+        >
           <Sparkles className="w-3.5 h-3.5 text-saffron" /> {eyebrow}
         </motion.p>
         <motion.h1
@@ -1016,7 +1102,10 @@ export function PageHero({
           {subtitle}
         </motion.p>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.18 }} className="mt-8">
-          <a href={primaryHref} className="btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold inline-flex items-center gap-2">
+          <a
+            href={primaryHref}
+            className="btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold inline-flex items-center gap-2"
+          >
             {primaryLabel} <ChevronRight className="w-4 h-4" />
           </a>
         </motion.div>
@@ -1030,7 +1119,11 @@ export function RoomsPage() {
     <PageShell>
       <PageHero
         eyebrow="Rooms & Stay"
-        title={<>Room <span className="text-gradient-gold italic">Booking</span></>}
+        title={
+          <>
+            Room <span className="text-gradient-gold italic">Booking</span>
+          </>
+        }
         subtitle="Choose peaceful rooms designed for devotees, families, and spiritual seekers visiting Vrindavan."
         image={roomSuite}
         primaryLabel="Book a Room"
@@ -1047,7 +1140,11 @@ export function HallsPage() {
     <PageShell>
       <PageHero
         eyebrow="Satsang & Events"
-        title={<>Hall <span className="text-gradient-gold italic">Booking</span></>}
+        title={
+          <>
+            Hall <span className="text-gradient-gold italic">Booking</span>
+          </>
+        }
         subtitle="Premium halls for satsang, kirtan, pravachan, meditation gatherings, and spiritual events."
         image={hallMaha}
         primaryLabel="Reserve Hall"
@@ -1064,7 +1161,11 @@ export function GalleryPage() {
     <PageShell>
       <PageHero
         eyebrow="Gallery"
-        title={<>Sacred <span className="text-gradient-gold italic">Moments</span></>}
+        title={
+          <>
+            Sacred <span className="text-gradient-gold italic">Moments</span>
+          </>
+        }
         subtitle="Explore the rooms, halls, mandir spaces, flowers, light, and atmosphere of Sakshi Dham International."
         image={mandir}
         primaryLabel="View Stay Options"
@@ -1080,7 +1181,11 @@ export function AboutPage() {
     <PageShell>
       <PageHero
         eyebrow="Our Story"
-        title={<>Sakshi Dham <span className="text-gradient-gold italic">International</span></>}
+        title={
+          <>
+            Sakshi Dham <span className="text-gradient-gold italic">International</span>
+          </>
+        }
         subtitle="A spiritual home in Vrindavan shaped by seva, devotion, peaceful hospitality, and sacred gathering."
         image={exterior}
         primaryLabel="Plan Your Stay"
@@ -1091,7 +1196,9 @@ export function AboutPage() {
         <div className="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-10 shadow-soft">
           <h2 className="font-display text-4xl sm:text-5xl font-medium">Our mission</h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            Sakshi Dham International welcomes devotees with clean rooms, graceful halls, quiet corners for prayer, and a warm seva team. Our mission is to make every visit to Vrindavan feel peaceful, dignified, and close to the spirit of bhakti.
+            Sakshi Dham International welcomes devotees with clean rooms, graceful halls, quiet
+            corners for prayer, and a warm seva team. Our mission is to make every visit to
+            Vrindavan feel peaceful, dignified, and close to the spirit of bhakti.
           </p>
         </div>
       </section>
@@ -1101,13 +1208,29 @@ export function AboutPage() {
 
 function FAQ() {
   const faqs = [
-    ["How do I confirm a booking?", "Submit the enquiry form or call the seva team. We confirm availability by phone or WhatsApp."],
-    ["Are rooms suitable for families?", "Yes, family rooms and premium suites are available with attached bathrooms and AC options."],
-    ["Can halls be booked for satsang?", "Yes, halls can be reserved for satsang, kirtan, pravachan, meditation, and spiritual gatherings."],
+    [
+      "How do I confirm a booking?",
+      "Submit the enquiry form or call the seva team. We confirm availability by phone or WhatsApp.",
+    ],
+    [
+      "Are rooms suitable for families?",
+      "Yes, family rooms and premium suites are available with attached bathrooms and AC options.",
+    ],
+    [
+      "Can halls be booked for satsang?",
+      "Yes, halls can be reserved for satsang, kirtan, pravachan, meditation, and spiritual gatherings.",
+    ],
   ];
   return (
     <section className="relative py-20 px-4 sm:px-6 bg-gradient-soft">
-      <SectionHeader eyebrow="FAQ" title={<>Before you <span className="text-gradient-gold italic">arrive</span></>} />
+      <SectionHeader
+        eyebrow="FAQ"
+        title={
+          <>
+            Before you <span className="text-gradient-gold italic">arrive</span>
+          </>
+        }
+      />
       <div className="mt-12 max-w-4xl mx-auto grid gap-4">
         {faqs.map(([q, a]) => (
           <div key={q} className="glass rounded-2xl p-5 shadow-card">
@@ -1125,7 +1248,11 @@ export function ContactPage() {
     <PageShell>
       <PageHero
         eyebrow="Contact"
-        title={<>Visit <span className="text-gradient-gold italic">Vrindavan</span></>}
+        title={
+          <>
+            Visit <span className="text-gradient-gold italic">Vrindavan</span>
+          </>
+        }
         subtitle="Reach the Sakshi Dham seva team for room bookings, hall reservations, directions, and travel support."
         image={flowers}
         primaryLabel="Send Enquiry"
