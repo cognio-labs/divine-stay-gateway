@@ -42,7 +42,7 @@ import roomDeluxeStock from "@/assets/room-deluxe.jpg";
 import roomFamilyStock from "@/assets/room-family.jpg";
 
 const gurujiImage = "/guruji.png";
-const siteLogo = "https://sciencedivine.org/wp-content/uploads/2023/07/cropped-SD_logo.png";
+const siteLogo = "/navbar-logo.png";
 const mandirImage = "/assets-custom/mandir-wide.jpeg";
 const roomDeluxeImage = "/assets-custom/room-1.jpeg";
 const roomFamilyImage = "/assets-custom/room-2.jpeg";
@@ -102,27 +102,17 @@ export function Navbar() {
       }`}
     >
       <div className="flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3 group">
-          <img
-            src={siteLogo}
-            alt="Sakshi Dham logo"
-            width={40}
-            height={40}
-            decoding="async"
-            className="h-10 w-10 rounded-full object-contain bg-white shadow-card"
-          />
-          <div className="leading-tight">
-            <div className={`font-display text-lg sm:text-xl font-semibold tracking-tight transition-colors duration-300 ${
-              useSolidNavbar ? "text-foreground" : "text-white drop-shadow-sm"
-            }`}>
-              Sakshi Dham
-            </div>
-            <div className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-              useSolidNavbar ? "text-muted-foreground" : "text-white/70"
-            }`}>
-              International
-            </div>
-          </div>
+        <a href="/" className="group inline-flex items-center" aria-label="Science Divine home">
+          <span className="inline-flex items-center rounded-[1.25rem] bg-white/95 px-3 py-2 shadow-card ring-1 ring-black/5 backdrop-blur-sm transition-transform duration-300 group-hover:scale-[1.02]">
+            <img
+              src={siteLogo}
+              alt="Science Divine logo"
+              width={218}
+              height={87}
+              decoding="async"
+              className="h-10 w-auto sm:h-11 lg:h-12 max-w-[170px] sm:max-w-[185px] object-contain"
+            />
+          </span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
