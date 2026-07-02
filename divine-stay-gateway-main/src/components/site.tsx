@@ -110,10 +110,14 @@ export function Navbar() {
             className="h-10 w-10 rounded-full object-contain bg-white shadow-card"
           />
           <div className="leading-tight">
-            <div className="font-display text-lg sm:text-xl font-semibold tracking-tight text-foreground">
+            <div className={`font-display text-lg sm:text-xl font-semibold tracking-tight transition-colors duration-300 ${
+              scrolled ? "text-foreground" : "text-white drop-shadow-sm"
+            }`}>
               Sakshi Dham
             </div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+              scrolled ? "text-muted-foreground" : "text-white/70"
+            }`}>
               International
             </div>
           </div>
@@ -126,8 +130,12 @@ export function Navbar() {
               <a
                 key={n.href}
                 href={n.href}
-                className={`text-sm font-semibold relative group transition ${
-                  active ? "text-primary" : "text-foreground/80 hover:text-foreground"
+                className={`text-sm font-semibold relative group transition-colors duration-300 ${
+                  active
+                    ? "text-primary"
+                    : scrolled
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-white/85 hover:text-white drop-shadow-sm"
                 }`}
               >
                 {n.label}
@@ -150,7 +158,11 @@ export function Navbar() {
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" />
           </a>
           <button
-            className="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-border bg-white/40"
+            className={`lg:hidden w-10 h-10 grid place-items-center rounded-full border transition-all duration-300 ${
+              scrolled
+                ? "border-border bg-white/40 text-foreground"
+                : "border-white/20 bg-white/10 text-white"
+            }`}
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -1512,7 +1524,95 @@ export function PageHero({
             {primaryLabel} <ChevronRight className="w-4 h-4" />
           </a>
         </motion.div>
+      </div>
+    </section>
+  );
+}
 
+const luxuryRooms = [
+  // DELUXE CATEGORY
+  {
+    category: "Deluxe",
+    name: "Deluxe Devotee Room",
+    img: roomDeluxeImage,
+    price: "1,499",
+    capacity: "2-4 Guests",
+    badge: "Most Booked",
+    description:
+      "A peaceful AC room with attached washroom, warm bedding, and a quiet atmosphere for families and devotees.",
+    amenities: ["AC", "Attached Washroom", "Hot Water", "Daily Seva Support"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Quiet hours after 10:00 PM",
+      "Photo ID required at arrival",
+    ],
+  },
+  {
+    category: "Deluxe",
+    name: "Deluxe Comfort Room",
+    img: "/assets-custom/room-deluxe-new.png",
+    price: "1,699",
+    capacity: "2 Guests",
+    badge: "Popular Choice",
+    description:
+      "Modern deluxe AC room offering gorgeous garden views, comfortable double bed, and clean attached washroom.",
+    amenities: ["AC", "Attached Washroom", "Hot Water", "Garden View"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "No smoking allowed",
+      "Vrindavan local guidelines apply",
+    ],
+  },
+  {
+    category: "Deluxe",
+    name: "Deluxe Twin Room",
+    img: roomDeluxeStock,
+    price: "1,599",
+    capacity: "2 Guests",
+    badge: "Pilgrim Friendly",
+    description:
+      "Features two separate single beds, AC, hot water, and modern facilities. Perfect for friends or co-travelers.",
+    amenities: ["AC", "Attached Washroom", "Twin Beds", "Hot Water"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Ideal for companions",
+      "Quiet environment",
+    ],
+  },
+  {
+    category: "Deluxe",
+    name: "Deluxe Balcony Room",
+    img: "/assets-custom/room-blue-new.jpg",
+    price: "1,899",
+    capacity: "2 Guests",
+    badge: "Courtyard View",
+    description:
+      "Peaceful corner deluxe room with a private balcony overlooking the beautiful ashram courtyard.",
+    amenities: ["AC", "Attached Washroom", "Private Balcony", "Hot Water"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Quiet hours after 10:00 PM",
+      "Complimentary morning tea",
+    ],
+  },
+
+  // FAMILY CATEGORY
+  {
+    category: "Family",
+    name: "Family Comfort Room",
+    img: roomFamilyImage,
+    price: "2,499",
+    capacity: "3-5 Guests",
+    badge: "Family Choice",
+    description:
+      "A spacious family stay designed for longer Vrindavan visits, with flexible bedding and easy access to ashram facilities.",
+    amenities: ["Family Beds", "Window AC", "Attached Washroom", "Extra Bedding"],
+    policies: ["Ideal for families", "Advance booking preferred", "Reception support available"],
+  },
+  {
+    category: "Family",
+    name: "Family Suite Room",
+    img: "/assets-custom/room-family-new.jpg",
     price: "2,999",
     capacity: "4-6 Guests",
     badge: "Best for Kids",
