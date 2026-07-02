@@ -772,7 +772,9 @@ export function Booking() {
                 <option>Maha Satsang Hall</option>
                 <option>Spiritual Event Hall</option>
               </select>
-              <p id="booking-type-help" className="sr-only">Choose a room or hall for this booking.</p>
+              <p id="booking-type-help" className="sr-only">
+                Choose a room or hall for this booking.
+              </p>
             </div>
             <Field
               id="booking-guests"
@@ -803,7 +805,9 @@ export function Booking() {
                 className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-saffron transition resize-none"
                 placeholder="Dietary needs, arrival time, satsang preferences…"
               />
-              <p id="booking-message-help" className="sr-only">Share arrival time, dietary needs, or satsang preferences.</p>
+              <p id="booking-message-help" className="sr-only">
+                Share arrival time, dietary needs, or satsang preferences.
+              </p>
             </div>
           </div>
 
@@ -857,7 +861,7 @@ function Field({
   error?: string;
   min?: string;
   className?: string;
-  icon?: React.ComponentType<{ className?: string }>; 
+  icon?: React.ComponentType<{ className?: string }>;
 }) {
   const helpId = `${id}-help`;
   return (
@@ -1211,7 +1215,6 @@ export function PageHero({
   );
 }
 
-
 const luxuryRooms = [
   {
     category: "Deluxe",
@@ -1220,9 +1223,14 @@ const luxuryRooms = [
     price: "1,499",
     capacity: "2-4 Guests",
     badge: "Most Booked",
-    description: "A peaceful AC room with attached washroom, warm bedding, and a quiet atmosphere for families and devotees.",
+    description:
+      "A peaceful AC room with attached washroom, warm bedding, and a quiet atmosphere for families and devotees.",
     amenities: ["AC", "Attached Washroom", "Hot Water", "Daily Seva Support"],
-    policies: ["Check-in from 12:00 PM", "Quiet hours after 10:00 PM", "Photo ID required at arrival"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Quiet hours after 10:00 PM",
+      "Photo ID required at arrival",
+    ],
   },
   {
     category: "Family",
@@ -1231,7 +1239,8 @@ const luxuryRooms = [
     price: "2,499",
     capacity: "3-5 Guests",
     badge: "Family Choice",
-    description: "A spacious family stay designed for longer Vrindavan visits, with flexible bedding and easy access to ashram facilities.",
+    description:
+      "A spacious family stay designed for longer Vrindavan visits, with flexible bedding and easy access to ashram facilities.",
     amenities: ["Family Beds", "Window AC", "Attached Washroom", "Extra Bedding"],
     policies: ["Ideal for families", "Advance booking preferred", "Reception support available"],
   },
@@ -1242,7 +1251,8 @@ const luxuryRooms = [
     price: "3,499",
     capacity: "2-3 Guests",
     badge: "Signature",
-    description: "A premium room experience for guests who want added calm, privacy, and comfort during their spiritual visit.",
+    description:
+      "A premium room experience for guests who want added calm, privacy, and comfort during their spiritual visit.",
     amenities: ["Premium Bed", "AC", "Hot Water", "Priority Assistance"],
     policies: ["Limited availability", "Best for senior guests", "Booking confirmation by call"],
   },
@@ -1253,7 +1263,8 @@ const luxuryRooms = [
     price: "3,999",
     capacity: "2 Guests",
     badge: "Executive",
-    description: "A refined stay option with a calm setting for coordinators, speakers, and guests visiting for satsang events.",
+    description:
+      "A refined stay option with a calm setting for coordinators, speakers, and guests visiting for satsang events.",
     amenities: ["AC", "Work Corner", "Attached Washroom", "Priority Check-in"],
     policies: ["Subject to availability", "Recommended for event guests", "Early request advised"],
   },
@@ -1276,17 +1287,27 @@ const roomAmenityGrid = [
 ];
 
 const roomFaqs = [
-  ["Can I book rooms for a family?", "Yes. Family rooms and extra bedding can be requested during booking."],
+  [
+    "Can I book rooms for a family?",
+    "Yes. Family rooms and extra bedding can be requested during booking.",
+  ],
   ["Are washrooms attached?", "Yes. The listed rooms include attached washroom access."],
-  ["How is booking confirmed?", "Submit the form and the seva team will confirm availability by phone or WhatsApp."],
-  ["Is early check-in possible?", "Early check-in depends on availability and should be requested in advance."],
+  [
+    "How is booking confirmed?",
+    "Submit the form and the seva team will confirm availability by phone or WhatsApp.",
+  ],
+  [
+    "Is early check-in possible?",
+    "Early check-in depends on availability and should be requested in advance.",
+  ],
 ];
 
 function LuxuryRoomsExperience() {
   const categories = ["All", "Deluxe", "Family", "Premium Suite", "Executive"];
   const [category, setCategory] = useState("All");
   const [activeRoom, setActiveRoom] = useState<(typeof luxuryRooms)[number] | null>(null);
-  const visibleRooms = category === "All" ? luxuryRooms : luxuryRooms.filter((room) => room.category === category);
+  const visibleRooms =
+    category === "All" ? luxuryRooms : luxuryRooms.filter((room) => room.category === category);
 
   return (
     <>
@@ -1294,12 +1315,17 @@ function LuxuryRoomsExperience() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
             <motion.div {...fadeUp}>
-              <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Luxury Accommodation</p>
+              <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+                Luxury Accommodation
+              </p>
               <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight">
-                Rooms shaped for <span className="text-gradient-gold italic">rest, seva, and grace</span>
+                Rooms shaped for{" "}
+                <span className="text-gradient-gold italic">rest, seva, and grace</span>
               </h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                Choose a peaceful stay with the warmth of an ashram and the thoughtful details of a premium retreat: clean bedding, AC comfort, attached washrooms, and a calm devotional setting.
+                Choose a peaceful stay with the warmth of an ashram and the thoughtful details of a
+                premium retreat: clean bedding, AC comfort, attached washrooms, and a calm
+                devotional setting.
               </p>
               <div className="mt-10 grid grid-cols-2 gap-3">
                 {roomStats.map(([value, label], index) => (
@@ -1311,18 +1337,36 @@ function LuxuryRoomsExperience() {
                     transition={{ delay: index * 0.06, duration: 0.45 }}
                     className="glass rounded-2xl p-5 shadow-card"
                   >
-                    <div className="font-display text-3xl text-gradient-gold font-semibold">{value}</div>
-                    <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
+                    <div className="font-display text-3xl text-gradient-gold font-semibold">
+                      {value}
+                    </div>
+                    <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                      {label}
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
-            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 }} className="relative rounded-[2rem] overflow-hidden shadow-soft">
-              <img src={roomDeluxeImage} alt="Luxury room at Sakshi Dham" loading="lazy" decoding="async" className="h-[520px] w-full object-cover" />
+            <motion.div
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.08 }}
+              className="relative rounded-[2rem] overflow-hidden shadow-soft"
+            >
+              <img
+                src={roomDeluxeImage}
+                alt="Luxury room at Sakshi Dham"
+                loading="lazy"
+                decoding="async"
+                className="h-[520px] w-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/65 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 glass-dark rounded-2xl p-5 text-white">
-                <div className="text-xs uppercase tracking-widest text-saffron">Premium Stay Experience</div>
-                <div className="mt-2 font-display text-3xl font-semibold">Comfort with devotional quiet</div>
+                <div className="text-xs uppercase tracking-widest text-saffron">
+                  Premium Stay Experience
+                </div>
+                <div className="mt-2 font-display text-3xl font-semibold">
+                  Comfort with devotional quiet
+                </div>
               </div>
             </motion.div>
           </div>
@@ -1332,13 +1376,25 @@ function LuxuryRoomsExperience() {
       <section className="relative py-20 px-4 sm:px-6">
         <SectionHeader
           eyebrow="Amenities"
-          title={<><span className="text-gradient-gold italic">Everything</span> needed for a peaceful stay</>}
+          title={
+            <>
+              <span className="text-gradient-gold italic">Everything</span> needed for a peaceful
+              stay
+            </>
+          }
           subtitle="Simple comforts, thoughtfully arranged for devotees, families, and spiritual groups."
         />
         <div className="mt-12 max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {roomAmenityGrid.map((item, index) => (
-            <motion.div key={item.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.04 }} className="glass rounded-3xl p-6 shadow-card hover:shadow-soft transition-all duration-500">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow"><item.icon className="w-5 h-5 text-white" /></div>
+            <motion.div
+              key={item.title}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: index * 0.04 }}
+              className="glass rounded-3xl p-6 shadow-card hover:shadow-soft transition-all duration-500"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow">
+                <item.icon className="w-5 h-5 text-white" />
+              </div>
               <h3 className="mt-5 font-display text-2xl font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.text}</p>
             </motion.div>
@@ -1350,42 +1406,93 @@ function LuxuryRoomsExperience() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="Room Collection"
-            title={<>Choose your <span className="text-gradient-gold italic">sanctuary</span></>}
+            title={
+              <>
+                Choose your <span className="text-gradient-gold italic">sanctuary</span>
+              </>
+            }
             subtitle="Browse by room category, compare comforts, and open a detailed view before booking."
           />
           <div className="mt-10 flex flex-wrap justify-center gap-2">
             {categories.map((item) => (
-              <button key={item} type="button" onClick={() => setCategory(item)} className={
-                category === item
-                  ? "btn-saffron rounded-full px-5 py-2.5 text-sm font-semibold"
-                  : "glass rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
-              }>
+              <button
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+                className={
+                  category === item
+                    ? "btn-saffron rounded-full px-5 py-2.5 text-sm font-semibold"
+                    : "glass rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
+                }
+              >
                 {item}
               </button>
             ))}
           </div>
           <div className="mt-14 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {visibleRooms.map((room, index) => (
-              <motion.article key={room.name} initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.06, duration: 0.55 }} className="group glass rounded-3xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-500 hover:-translate-y-1">
+              <motion.article
+                key={room.name}
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.06, duration: 0.55 }}
+                className="group glass rounded-3xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-500 hover:-translate-y-1"
+              >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={room.img} alt={room.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+                  <img
+                    src={room.img}
+                    alt={room.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">{room.badge}</span>
+                  <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">
+                    {room.badge}
+                  </span>
                 </div>
                 <div className="p-6">
-                  <div className="text-xs uppercase tracking-widest text-saffron-deep font-semibold">{room.category}</div>
+                  <div className="text-xs uppercase tracking-widest text-saffron-deep font-semibold">
+                    {room.category}
+                  </div>
                   <h3 className="mt-2 font-display text-2xl font-semibold">{room.name}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{room.description}</p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {room.description}
+                  </p>
                   <div className="mt-5 flex items-end justify-between gap-4">
-                    <div><div className="text-xs text-muted-foreground uppercase tracking-widest">From</div><div className="font-display text-3xl font-semibold text-gradient-gold">₹{room.price}</div></div>
+                    <div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-widest">
+                        From
+                      </div>
+                      <div className="font-display text-3xl font-semibold text-gradient-gold">
+                        ₹{room.price}
+                      </div>
+                    </div>
                     <div className="text-right text-xs text-muted-foreground">{room.capacity}</div>
                   </div>
                   <div className="mt-5 grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                    {room.amenities.slice(0, 4).map((item) => <span key={item} className="flex items-center gap-1.5"><Check className="w-3 h-3 text-saffron-deep" />{item}</span>)}
+                    {room.amenities.slice(0, 4).map((item) => (
+                      <span key={item} className="flex items-center gap-1.5">
+                        <Check className="w-3 h-3 text-saffron-deep" />
+                        {item}
+                      </span>
+                    ))}
                   </div>
                   <div className="mt-6 flex gap-2">
-                    <button type="button" onClick={() => setActiveRoom(room)} className="flex-1 rounded-full border border-border py-2.5 text-sm font-semibold hover:bg-accent transition">Details</button>
-                    <a href="#booking" className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold">Book</a>
+                    <button
+                      type="button"
+                      onClick={() => setActiveRoom(room)}
+                      className="flex-1 rounded-full border border-border py-2.5 text-sm font-semibold hover:bg-accent transition"
+                    >
+                      Details
+                    </button>
+                    <a
+                      href="#booking"
+                      className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold"
+                    >
+                      Book
+                    </a>
                   </div>
                 </div>
               </motion.article>
@@ -1395,32 +1502,78 @@ function LuxuryRoomsExperience() {
       </section>
 
       <section className="relative min-h-[420px] overflow-hidden px-4 sm:px-6 py-24 flex items-center">
-        <img src={roomFamilyImage} alt="Family room promotion" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+        <img
+          src={roomFamilyImage}
+          alt="Family room promotion"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-[#241811]/70" />
         <div className="relative max-w-4xl mx-auto text-center text-white">
           <p className="text-xs uppercase tracking-[0.28em] text-saffron">Extended Stays</p>
-          <h2 className="mt-4 font-display text-5xl sm:text-6xl font-semibold">Arrive for darshan, stay in peace</h2>
-          <p className="mt-5 text-white/75 leading-relaxed">Ask the seva team for family stays, group visits, event room blocks, and longer Vrindavan itineraries.</p>
-          <a href="#booking" className="mt-8 inline-flex btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold">Reserve Your Stay</a>
+          <h2 className="mt-4 font-display text-5xl sm:text-6xl font-semibold">
+            Arrive for darshan, stay in peace
+          </h2>
+          <p className="mt-5 text-white/75 leading-relaxed">
+            Ask the seva team for family stays, group visits, event room blocks, and longer
+            Vrindavan itineraries.
+          </p>
+          <a
+            href="#booking"
+            className="mt-8 inline-flex btn-saffron rounded-full px-7 py-3.5 text-sm font-semibold"
+          >
+            Reserve Your Stay
+          </a>
         </div>
       </section>
 
       <section className="relative py-24 sm:py-32 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <SectionHeader eyebrow="Why Stay With Us" title={<>Designed around <span className="text-gradient-gold italic">devotion and ease</span></>} />
+            <SectionHeader
+              eyebrow="Why Stay With Us"
+              title={
+                <>
+                  Designed around{" "}
+                  <span className="text-gradient-gold italic">devotion and ease</span>
+                </>
+              }
+            />
             <div className="mt-10 grid gap-4">
-              {["Quiet devotional setting", "Clean practical rooms", "Helpful reception team", "Close to Vrindavan spiritual routes"].map((item) => (
-                <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card"><HeartHandshake className="w-5 h-5 text-saffron-deep shrink-0" /><span className="font-medium">{item}</span></div>
+              {[
+                "Quiet devotional setting",
+                "Clean practical rooms",
+                "Helpful reception team",
+                "Close to Vrindavan spiritual routes",
+              ].map((item) => (
+                <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card">
+                  <HeartHandshake className="w-5 h-5 text-saffron-deep shrink-0" />
+                  <span className="font-medium">{item}</span>
+                </div>
               ))}
             </div>
           </div>
           <div className="glass rounded-3xl p-6 shadow-soft overflow-x-auto">
             <table className="w-full text-sm">
               <caption className="sr-only">Room comparison table</caption>
-              <thead><tr className="text-left text-xs uppercase tracking-widest text-muted-foreground"><th className="py-3">Room</th><th>Capacity</th><th>Comforts</th><th>From</th></tr></thead>
+              <thead>
+                <tr className="text-left text-xs uppercase tracking-widest text-muted-foreground">
+                  <th className="py-3">Room</th>
+                  <th>Capacity</th>
+                  <th>Comforts</th>
+                  <th>From</th>
+                </tr>
+              </thead>
               <tbody className="divide-y divide-border/70">
-                {luxuryRooms.map((room) => <tr key={room.name}><td className="py-4 font-semibold">{room.name}</td><td>{room.capacity}</td><td>{room.amenities.slice(0, 2).join(", ")}</td><td>₹{room.price}</td></tr>)}
+                {luxuryRooms.map((room) => (
+                  <tr key={room.name}>
+                    <td className="py-4 font-semibold">{room.name}</td>
+                    <td>{room.capacity}</td>
+                    <td>{room.amenities.slice(0, 2).join(", ")}</td>
+                    <td>₹{room.price}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -1430,27 +1583,102 @@ function LuxuryRoomsExperience() {
       <section className="relative py-20 px-4 sm:px-6 bg-gradient-soft">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-10 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Guest Voices</p>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">Warm words from visiting families</h2>
+            <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+              Guest Voices
+            </p>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">
+              Warm words from visiting families
+            </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
-            {["Rooms were simple, clean, and peaceful after darshan.", "The team helped our family settle in with care."].map((text, i) => <div key={i} className="glass rounded-3xl p-6 shadow-card"><div className="text-saffron-deep">★★★★★</div><p className="mt-4 font-display text-xl">"{text}"</p></div>)}
+            {[
+              "Rooms were simple, clean, and peaceful after darshan.",
+              "The team helped our family settle in with care.",
+            ].map((text, i) => (
+              <div key={i} className="glass rounded-3xl p-6 shadow-card">
+                <div className="text-saffron-deep">★★★★★</div>
+                <p className="mt-4 font-display text-xl">"{text}"</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="relative py-20 px-4 sm:px-6">
-        <SectionHeader eyebrow="Room FAQ" title={<>Before your <span className="text-gradient-gold italic">stay</span></>} />
+        <SectionHeader
+          eyebrow="Room FAQ"
+          title={
+            <>
+              Before your <span className="text-gradient-gold italic">stay</span>
+            </>
+          }
+        />
         <div className="mt-12 max-w-4xl mx-auto grid gap-4">
-          {roomFaqs.map(([q, a]) => <div key={q} className="glass rounded-2xl p-5 shadow-card"><h3 className="font-semibold">{q}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a}</p></div>)}
+          {roomFaqs.map(([q, a]) => (
+            <div key={q} className="glass rounded-2xl p-5 shadow-card">
+              <h3 className="font-semibold">{q}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {activeRoom && (
-        <div className="fixed inset-0 z-[80] bg-black/55 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="room-details-title">
+        <div
+          className="fixed inset-0 z-[80] bg-black/55 backdrop-blur-sm p-4 flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="room-details-title"
+        >
           <div className="max-w-4xl w-full max-h-[90svh] overflow-y-auto rounded-3xl bg-background shadow-soft">
-            <div className="relative h-72 overflow-hidden rounded-t-3xl"><img src={activeRoom.img} alt={activeRoom.name} className="w-full h-full object-cover" /><button type="button" onClick={() => setActiveRoom(null)} className="absolute top-4 right-4 glass rounded-full px-4 py-2 text-sm font-semibold">Close</button></div>
-            <div className="p-6 sm:p-8"><p className="text-xs uppercase tracking-widest text-saffron-deep">{activeRoom.badge}</p><h2 id="room-details-title" className="mt-2 font-display text-4xl font-semibold">{activeRoom.name}</h2><p className="mt-4 text-muted-foreground leading-relaxed">{activeRoom.description}</p><div className="mt-6 grid sm:grid-cols-2 gap-4"><div className="glass rounded-2xl p-5"><h3 className="font-semibold">Amenities</h3><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{activeRoom.amenities.map((item) => <li key={item}>• {item}</li>)}</ul></div><div className="glass rounded-2xl p-5"><h3 className="font-semibold">Policies</h3><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{activeRoom.policies.map((item) => <li key={item}>• {item}</li>)}</ul></div></div><a href="#booking" onClick={() => setActiveRoom(null)} className="mt-7 inline-flex btn-saffron rounded-full px-7 py-3 text-sm font-semibold">Book This Room</a></div>
+            <div className="relative h-72 overflow-hidden rounded-t-3xl">
+              <img
+                src={activeRoom.img}
+                alt={activeRoom.name}
+                className="w-full h-full object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setActiveRoom(null)}
+                className="absolute top-4 right-4 glass rounded-full px-4 py-2 text-sm font-semibold"
+              >
+                Close
+              </button>
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="text-xs uppercase tracking-widest text-saffron-deep">
+                {activeRoom.badge}
+              </p>
+              <h2 id="room-details-title" className="mt-2 font-display text-4xl font-semibold">
+                {activeRoom.name}
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{activeRoom.description}</p>
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                <div className="glass rounded-2xl p-5">
+                  <h3 className="font-semibold">Amenities</h3>
+                  <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                    {activeRoom.amenities.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="glass rounded-2xl p-5">
+                  <h3 className="font-semibold">Policies</h3>
+                  <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                    {activeRoom.policies.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <a
+                href="#booking"
+                onClick={() => setActiveRoom(null)}
+                className="mt-7 inline-flex btn-saffron rounded-full px-7 py-3 text-sm font-semibold"
+              >
+                Book This Room
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -1458,12 +1686,25 @@ function LuxuryRoomsExperience() {
   );
 }
 
-const hallStats = [["2", "Event Halls"], ["300", "Guest Capacity"], ["3", "Packages"], ["24/7", "Planning Support"]];
+const hallStats = [
+  ["2", "Event Halls"],
+  ["300", "Guest Capacity"],
+  ["3", "Packages"],
+  ["24/7", "Planning Support"],
+];
 const hallFeatures = [
-  { icon: Users, title: "Large Capacity", text: "Flexible space for satsang and spiritual gatherings." },
+  {
+    icon: Users,
+    title: "Large Capacity",
+    text: "Flexible space for satsang and spiritual gatherings.",
+  },
   { icon: Wind, title: "Cooling Support", text: "Comfortable indoor event environment." },
   { icon: Clock, title: "Booking Support", text: "Guidance for setup, timing, and flow." },
-  { icon: Sparkles, title: "Spiritual Setting", text: "A calm venue for kirtan, pravachan, and seva." },
+  {
+    icon: Sparkles,
+    title: "Spiritual Setting",
+    text: "A calm venue for kirtan, pravachan, and seva.",
+  },
 ];
 const eventPackages = [
   ["Silver", "7,500", "Small satsang and meditation gatherings"],
@@ -1476,24 +1717,262 @@ function LuxuryHallsExperience() {
     <>
       <section className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <motion.div {...fadeUp}><p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Premium Venue Experience</p><h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight">Sacred halls for <span className="text-gradient-gold italic">memorable gatherings</span></h2><p className="mt-6 text-muted-foreground leading-relaxed">Host satsang, kirtan, pravachan, meditation circles, and devotional events in spacious halls prepared for comfort, sound, flow, and reverence.</p><div className="mt-10 grid grid-cols-2 gap-3">{hallStats.map(([value, label], i) => <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="glass rounded-2xl p-5 shadow-card"><div className="font-display text-3xl text-gradient-gold font-semibold">{value}</div><div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{label}</div></motion.div>)}</div></motion.div>
-          <motion.div {...fadeUp} className="rounded-[2rem] overflow-hidden shadow-soft"><img src={hallImage} alt="Premium satsang hall" loading="lazy" decoding="async" className="w-full h-[520px] object-cover" /></motion.div>
+          <motion.div {...fadeUp}>
+            <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+              Premium Venue Experience
+            </p>
+            <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-display font-medium leading-tight">
+              Sacred halls for{" "}
+              <span className="text-gradient-gold italic">memorable gatherings</span>
+            </h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              Host satsang, kirtan, pravachan, meditation circles, and devotional events in spacious
+              halls prepared for comfort, sound, flow, and reverence.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-3">
+              {hallStats.map(([value, label], i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06 }}
+                  className="glass rounded-2xl p-5 shadow-card"
+                >
+                  <div className="font-display text-3xl text-gradient-gold font-semibold">
+                    {value}
+                  </div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                    {label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div {...fadeUp} className="rounded-[2rem] overflow-hidden shadow-soft">
+            <img
+              src={hallImage}
+              alt="Premium satsang hall"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-[520px] object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
-      <section className="relative py-20 px-4 sm:px-6"><SectionHeader eyebrow="Hall Features" title={<>Every event with <span className="text-gradient-gold italic">comfort and care</span></>} /><div className="mt-12 max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">{hallFeatures.map((item, i) => <motion.div key={item.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.04 }} className="glass rounded-3xl p-6 shadow-card"><div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow"><item.icon className="w-5 h-5 text-white" /></div><h3 className="mt-5 font-display text-2xl font-semibold">{item.title}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.text}</p></motion.div>)}</div></section>
+      <section className="relative py-20 px-4 sm:px-6">
+        <SectionHeader
+          eyebrow="Hall Features"
+          title={
+            <>
+              Every event with <span className="text-gradient-gold italic">comfort and care</span>
+            </>
+          }
+        />
+        <div className="mt-12 max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {hallFeatures.map((item, i) => (
+            <motion.div
+              key={item.title}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: i * 0.04 }}
+              className="glass rounded-3xl p-6 shadow-card"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow">
+                <item.icon className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="mt-5 font-display text-2xl font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-      <section className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft"><SectionHeader eyebrow="Hall Collection" title={<>Venues for <span className="text-gradient-gold italic">satsang and celebration</span></>} subtitle="Choose from spacious halls for devotional and family events." /><div className="mt-14 max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">{halls.map((hall, i) => <motion.article key={hall.name} initial={{ opacity: 0, y: 34 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group glass rounded-[2rem] overflow-hidden shadow-card hover:shadow-soft transition-all duration-500"><div className="relative h-[440px] overflow-hidden"><img src={hall.img} alt={hall.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" /><div className="absolute inset-0 bg-gradient-to-t from-[#241811]/90 via-transparent to-transparent" /><div className="absolute bottom-6 left-6 right-6 text-white"><div className="flex gap-2 text-[11px] uppercase tracking-widest"><span className="glass-dark rounded-full px-3 py-1">{hall.capacity}</span><span className="glass-dark rounded-full px-3 py-1">{hall.use}</span></div><h3 className="mt-4 font-display text-4xl font-semibold">{hall.name}</h3><p className="mt-3 text-white/75">A refined venue for spiritual programs, family gatherings, and devotional events.</p><a href="#booking" className="mt-5 inline-flex btn-saffron rounded-full px-6 py-3 text-sm font-semibold">Reserve Hall</a></div></div></motion.article>)}</div></section>
+      <section className="relative py-24 sm:py-32 px-4 sm:px-6 bg-gradient-soft">
+        <SectionHeader
+          eyebrow="Hall Collection"
+          title={
+            <>
+              Venues for <span className="text-gradient-gold italic">satsang and celebration</span>
+            </>
+          }
+          subtitle="Choose from spacious halls for devotional and family events."
+        />
+        <div className="mt-14 max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
+          {halls.map((hall, i) => (
+            <motion.article
+              key={hall.name}
+              initial={{ opacity: 0, y: 34 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="group glass rounded-[2rem] overflow-hidden shadow-card hover:shadow-soft transition-all duration-500"
+            >
+              <div className="relative h-[440px] overflow-hidden">
+                <img
+                  src={hall.img}
+                  alt={hall.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/90 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <div className="flex gap-2 text-[11px] uppercase tracking-widest">
+                    <span className="glass-dark rounded-full px-3 py-1">{hall.capacity}</span>
+                    <span className="glass-dark rounded-full px-3 py-1">{hall.use}</span>
+                  </div>
+                  <h3 className="mt-4 font-display text-4xl font-semibold">{hall.name}</h3>
+                  <p className="mt-3 text-white/75">
+                    A refined venue for spiritual programs, family gatherings, and devotional
+                    events.
+                  </p>
+                  <a
+                    href="#booking"
+                    className="mt-5 inline-flex btn-saffron rounded-full px-6 py-3 text-sm font-semibold"
+                  >
+                    Reserve Hall
+                  </a>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
 
-      <section className="relative py-20 px-4 sm:px-6"><div className="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start"><div><p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Packages</p><h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">Event plans for every gathering</h2><p className="mt-5 text-muted-foreground leading-relaxed">Select a simple package and the seva team will help confirm timings, hall availability, and coordination details.</p></div><div className="grid md:grid-cols-3 gap-4">{eventPackages.map(([name, price, text]) => <div key={name} className="glass rounded-3xl p-6 shadow-card"><div className="text-xs uppercase tracking-widest text-saffron-deep">{name}</div><div className="mt-3 font-display text-4xl text-gradient-gold font-semibold">₹{price}</div><p className="mt-4 text-sm text-muted-foreground leading-relaxed">{text}</p><a href="#booking" className="mt-6 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-accent transition">Enquire</a></div>)}</div></div></section>
+      <section className="relative py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+              Packages
+            </p>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">
+              Event plans for every gathering
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Select a simple package and the seva team will help confirm timings, hall
+              availability, and coordination details.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {eventPackages.map(([name, price, text]) => (
+              <div key={name} className="glass rounded-3xl p-6 shadow-card">
+                <div className="text-xs uppercase tracking-widest text-saffron-deep">{name}</div>
+                <div className="mt-3 font-display text-4xl text-gradient-gold font-semibold">
+                  ₹{price}
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{text}</p>
+                <a
+                  href="#booking"
+                  className="mt-6 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
+                >
+                  Enquire
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="relative py-24 px-4 sm:px-6 bg-gradient-soft"><div className="max-w-6xl mx-auto"><SectionHeader eyebrow="Booking Timeline" title={<>From enquiry to <span className="text-gradient-gold italic">event day</span></>} /><div className="mt-12 grid md:grid-cols-4 gap-4">{["Share event details", "Confirm hall and timing", "Plan setup and seating", "Arrive for the gathering"].map((step, i) => <div key={step} className="glass rounded-2xl p-5 shadow-card"><div className="font-display text-3xl text-gradient-gold">0{i + 1}</div><div className="mt-3 font-semibold">{step}</div></div>)}</div></div></section>
+      <section className="relative py-24 px-4 sm:px-6 bg-gradient-soft">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader
+            eyebrow="Booking Timeline"
+            title={
+              <>
+                From enquiry to <span className="text-gradient-gold italic">event day</span>
+              </>
+            }
+          />
+          <div className="mt-12 grid md:grid-cols-4 gap-4">
+            {[
+              "Share event details",
+              "Confirm hall and timing",
+              "Plan setup and seating",
+              "Arrive for the gathering",
+            ].map((step, i) => (
+              <div key={step} className="glass rounded-2xl p-5 shadow-card">
+                <div className="font-display text-3xl text-gradient-gold">0{i + 1}</div>
+                <div className="mt-3 font-semibold">{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="relative py-24 px-4 sm:px-6"><div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center"><div><p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Why Choose Our Halls</p><h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">A venue held with care, quiet, and devotion</h2></div><div className="grid gap-4">{["Spacious indoor layout", "Devotional environment", "Seating flexibility", "Seva team coordination"].map((item) => <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card"><Sparkle className="w-5 h-5 text-saffron-deep" /><span className="font-medium">{item}</span></div>)}</div></div></section>
+      <section className="relative py-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+              Why Choose Our Halls
+            </p>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-medium">
+              A venue held with care, quiet, and devotion
+            </h2>
+          </div>
+          <div className="grid gap-4">
+            {[
+              "Spacious indoor layout",
+              "Devotional environment",
+              "Seating flexibility",
+              "Seva team coordination",
+            ].map((item) => (
+              <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card">
+                <Sparkle className="w-5 h-5 text-saffron-deep" />
+                <span className="font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="relative py-20 px-4 sm:px-6 bg-gradient-soft"><SectionHeader eyebrow="Hall Gallery" title={<>A glimpse of the <span className="text-gradient-gold italic">event space</span></>} /><div className="mt-12 max-w-7xl mx-auto grid md:grid-cols-3 gap-4">{[hallImage, hallImage, hallImage].map((img, i) => <figure key={i} className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card"><img src={img} alt="Satsang hall gallery" loading="lazy" decoding="async" className="w-full h-full object-cover" /></figure>)}</div></section>
+      <section className="relative py-20 px-4 sm:px-6 bg-gradient-soft">
+        <SectionHeader
+          eyebrow="Hall Gallery"
+          title={
+            <>
+              A glimpse of the <span className="text-gradient-gold italic">event space</span>
+            </>
+          }
+        />
+        <div className="mt-12 max-w-7xl mx-auto grid md:grid-cols-3 gap-4">
+          {[hallImage, hallImage, hallImage].map((img, i) => (
+            <figure
+              key={i}
+              className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card"
+            >
+              <img
+                src={img}
+                alt="Satsang hall gallery"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
 
-      <section className="relative py-24 px-4 sm:px-6"><div className="max-w-5xl mx-auto text-center glass rounded-[2rem] p-8 sm:p-12 shadow-soft"><p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">Reserve Your Hall</p><h2 className="mt-3 font-display text-5xl font-medium">Plan a sacred gathering at Sakshi Dham</h2><p className="mt-5 text-muted-foreground leading-relaxed">Share your expected capacity, date, and event style. The team will help confirm the best hall and package.</p><a href="#booking" className="mt-8 inline-flex btn-saffron rounded-full px-8 py-4 text-sm font-semibold">Start Hall Enquiry</a></div></section>
+      <section className="relative py-24 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto text-center glass rounded-[2rem] p-8 sm:p-12 shadow-soft">
+          <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
+            Reserve Your Hall
+          </p>
+          <h2 className="mt-3 font-display text-5xl font-medium">
+            Plan a sacred gathering at Sakshi Dham
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Share your expected capacity, date, and event style. The team will help confirm the best
+            hall and package.
+          </p>
+          <a
+            href="#booking"
+            className="mt-8 inline-flex btn-saffron rounded-full px-8 py-4 text-sm font-semibold"
+          >
+            Start Hall Enquiry
+          </a>
+        </div>
+      </section>
     </>
   );
 }

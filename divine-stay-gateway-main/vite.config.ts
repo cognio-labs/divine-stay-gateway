@@ -11,6 +11,20 @@ export default defineConfig({
     server: {
       port: 5712,
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes("node_modules")) return;
+            if (id.includes("framer-motion")) return "vendor-motion";
+            if (id.includes("lucide-react")) return "vendor-icons";
+            if (id.includes("@tanstack")) return "vendor-tanstack";
+            if (id.includes("react")) return "vendor-react";
+            return "vendor";
+          },
+        },
+      },
+    },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
