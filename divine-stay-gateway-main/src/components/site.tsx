@@ -1518,8 +1518,6 @@ export function PageHero({
 }
 
 
-      "Check-in from 12:00 PM",
-      "Ideal for companions",
       "Quiet environment",
     ],
   },
