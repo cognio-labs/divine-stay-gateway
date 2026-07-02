@@ -1513,16 +1513,6 @@ export function PageHero({
           </a>
         </motion.div>
 
-    price: "2,499",
-    capacity: "3-5 Guests",
-    badge: "Family Choice",
-    description:
-      "A spacious family stay designed for longer Vrindavan visits, with flexible bedding and easy access to ashram facilities.",
-    amenities: ["Family Beds", "Window AC", "Attached Washroom", "Extra Bedding"],
-    policies: ["Ideal for families", "Advance booking preferred", "Reception support available"],
-  },
-  {
-    category: "Family",
     name: "Family Suite Room",
     img: "/assets-custom/room-family-new.jpg",
     price: "2,999",
