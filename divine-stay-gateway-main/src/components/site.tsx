@@ -1518,7 +1518,6 @@ export function PageHero({
 }
 
 
-      "Quiet environment",
     ],
   },
   {
