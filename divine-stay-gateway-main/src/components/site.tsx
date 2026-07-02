@@ -116,8 +116,8 @@ export function Navbar() {
                 >
                   {n.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-saffron transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
+                    className={`absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-saffron origin-left transform scale-x-0 transition-transform duration-300 ease-out ${
+                      active ? "scale-x-100" : "group-hover:scale-x-100"
                     }`}
                   />
                 </a>
@@ -198,8 +198,7 @@ export function Hero() {
           fetchPriority="high"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2a1a10]/70 via-[#3a2718]/60 to-[#faf7f2]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,164,76,0.35),transparent_60%)]" />
+        <div className="absolute inset-0 hero-overlay" />
       </motion.div>
 
       <Particles />
@@ -235,9 +234,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
-          className="mt-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs uppercase tracking-[0.25em] text-foreground/80"
+          className="mt-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-xs uppercase tracking-[0.25em] text-white/90"
         >
-          <Sparkles className="w-3.5 h-3.5 text-saffron-deep" />
+          <Sparkles className="w-3.5 h-3.5 text-saffron" />
           Vrindavan · Divine Sanctuary
         </motion.p>
 
@@ -264,7 +263,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.9 }}
-          className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-white/75 leading-relaxed"
+          className="mt-4 max-w-2xl mx-auto text-white/75 leading-relaxed"
         >
           Experience divine peace, comfortable stay, satsang halls, and spiritual energy in the
           heart of Vrindavan.
@@ -284,7 +283,7 @@ export function Hero() {
           </a>
           <a
             href="/about"
-            className="glass rounded-full px-7 py-3.5 text-sm font-semibold text-white border border-white/30 hover:bg-white/20 transition"
+            className="btn-secondary rounded-full px-7 py-3.5 text-sm font-semibold transition"
           >
             Explore Ashram
           </a>
@@ -396,7 +395,7 @@ function WhyChooseSakshiDham() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative rounded-3xl p-7 shadow-card hover:shadow-soft hover:-translate-y-2 transition-all duration-500 cursor-default"
+              className="group relative rounded-3xl p-7 premium-card cursor-default"
               style={{
                 background: "color-mix(in oklab, #FDFAF5 90%, transparent)",
                 border: "1px solid color-mix(in oklab, #D9C4A0 32%, transparent)",
@@ -540,7 +539,7 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.5 }}
-              className="group flex items-center gap-4 rounded-2xl p-5 shadow-card hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              className="group flex items-center gap-4 rounded-2xl p-5 premium-card"
               style={{ background: "color-mix(in oklab, #FDFAF5 88%, transparent)", border: "1px solid color-mix(in oklab, #D9C4A0 30%, transparent)" }}
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-saffron grid place-items-center shadow-glow group-hover:scale-110 transition-transform shrink-0">
@@ -601,7 +600,7 @@ export function Rooms() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative rounded-3xl overflow-hidden glass shadow-card hover:shadow-soft transition-all duration-500 hover:-translate-y-2"
+            className="group relative rounded-3xl overflow-hidden glass premium-card"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <img
@@ -611,7 +610,7 @@ export function Rooms() {
                 decoding="async"
                 width={1280}
                 height={896}
-                className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
               <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">
@@ -634,7 +633,7 @@ export function Rooms() {
               <div className="mt-6 flex items-center gap-2">
                 <a
                   href="/rooms"
-                  className="flex-1 text-center rounded-full border border-border py-2.5 text-sm font-semibold hover:bg-accent transition"
+                  className="flex-1 btn-outline-dark text-center rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center"
                 >
                   View Room
                 </a>
@@ -692,7 +691,7 @@ export function Halls() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ delay: i * 0.1, duration: 0.8 }}
-            className="group relative rounded-[2rem] overflow-hidden shadow-card hover:shadow-soft transition-all duration-500"
+            className="group relative rounded-[2rem] overflow-hidden premium-card"
           >
             <div className="relative h-[420px] sm:h-[480px] overflow-hidden">
               <img
@@ -702,7 +701,7 @@ export function Halls() {
                 decoding="async"
                 width={1280}
                 height={896}
-                className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2a1a10]/95 via-[#2a1a10]/40 to-transparent" />
             </div>
@@ -770,14 +769,14 @@ export function Gallery() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ delay: (i % 6) * 0.06, duration: 0.7 }}
-            className={`relative overflow-hidden rounded-2xl shadow-card group ${g.span}`}
+            className={`relative overflow-hidden rounded-2xl group premium-card ${g.span}`}
           >
             <img
               src={g.src}
               alt={g.alt}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <figcaption className="absolute bottom-3 left-3 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition">
@@ -1073,7 +1072,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.6 }}
-            className="glass rounded-3xl p-8 shadow-card hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
+            className="glass rounded-3xl p-8 premium-card"
           >
             <div className="flex gap-0.5 text-saffron-deep">
               {Array.from({ length: 5 }).map((_, j) => (
@@ -1129,7 +1128,7 @@ export function Contact() {
             <a
               key={c.label}
               href={c.href}
-              className="group glass rounded-2xl p-6 shadow-card hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
+              className="group glass rounded-2xl p-6 premium-card"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-saffron grid place-items-center shadow-glow group-hover:scale-110 transition-transform">
                 <c.icon className="w-5 h-5 text-white" />
@@ -1326,25 +1325,25 @@ export function PageHero({
   return (
     <section className="relative min-h-[58svh] pt-32 sm:pt-36 flex items-center overflow-hidden">
       <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#241811]/80 via-[#3a2718]/62 to-background" />
+      <div className="absolute inset-0 page-hero-overlay" />
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center text-white">
         <motion.p
           {...fadeUp}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs uppercase tracking-[0.25em]"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-xs uppercase tracking-[0.25em] text-white/90"
         >
           <Sparkles className="w-3.5 h-3.5 text-saffron" /> {eyebrow}
         </motion.p>
         <motion.h1
           {...fadeUp}
           transition={{ ...fadeUp.transition, delay: 0.06 }}
-          className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.45)]"
+          className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-white"
         >
           {title}
         </motion.h1>
         <motion.p
           {...fadeUp}
           transition={{ ...fadeUp.transition, delay: 0.12 }}
-          className="mt-5 max-w-2xl mx-auto text-white/82 leading-relaxed"
+          className="mt-5 max-w-2xl mx-auto text-white/85 leading-relaxed"
         >
           {subtitle}
         </motion.p>
@@ -1481,7 +1480,7 @@ function LuxuryRoomsExperience() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.06, duration: 0.45 }}
-                    className="glass rounded-2xl p-5 shadow-card"
+                    className="glass rounded-2xl p-5 premium-card"
                   >
                     <div className="font-display text-3xl text-gradient-gold font-semibold">
                       {value}
@@ -1536,7 +1535,7 @@ function LuxuryRoomsExperience() {
               key={item.title}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: index * 0.04 }}
-              className="glass rounded-3xl p-6 shadow-card hover:shadow-soft transition-all duration-500"
+              className="glass rounded-3xl p-6 premium-card"
             >
               <div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow">
                 <item.icon className="w-5 h-5 text-white" />
@@ -1583,7 +1582,7 @@ function LuxuryRoomsExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06, duration: 0.55 }}
-                className="group glass rounded-3xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-500 hover:-translate-y-1"
+                className="group glass rounded-3xl overflow-hidden premium-card"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -1591,7 +1590,7 @@ function LuxuryRoomsExperience() {
                     alt={room.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">
@@ -1629,7 +1628,7 @@ function LuxuryRoomsExperience() {
                     <button
                       type="button"
                       onClick={() => setActiveRoom(room)}
-                      className="flex-1 rounded-full border border-border py-2.5 text-sm font-semibold hover:bg-accent transition"
+                      className="flex-1 btn-outline-dark text-center rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center"
                     >
                       Details
                     </button>
@@ -1693,14 +1692,14 @@ function LuxuryRoomsExperience() {
                 "Helpful reception team",
                 "Close to Vrindavan spiritual routes",
               ].map((item) => (
-                <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card">
+                <div key={item} className="glass rounded-2xl p-5 flex gap-4 premium-card">
                   <HeartHandshake className="w-5 h-5 text-saffron-deep shrink-0" />
                   <span className="font-medium">{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="glass rounded-3xl p-6 shadow-soft overflow-x-auto">
+          <div className="glass rounded-3xl p-6 premium-card overflow-x-auto">
             <table className="w-full text-sm">
               <caption className="sr-only">Room comparison table</caption>
               <thead>
@@ -1741,7 +1740,7 @@ function LuxuryRoomsExperience() {
               "Rooms were simple, clean, and peaceful after darshan.",
               "The team helped our family settle in with care.",
             ].map((text, i) => (
-              <div key={i} className="glass rounded-3xl p-6 shadow-card">
+              <div key={i} className="glass rounded-3xl p-6 premium-card">
                 <div className="text-saffron-deep">★★★★★</div>
                 <p className="mt-4 font-display text-xl">"{text}"</p>
               </div>
@@ -1761,7 +1760,7 @@ function LuxuryRoomsExperience() {
         />
         <div className="mt-12 max-w-4xl mx-auto grid gap-4">
           {roomFaqs.map(([q, a]) => (
-            <div key={q} className="glass rounded-2xl p-5 shadow-card">
+            <div key={q} className="glass rounded-2xl p-5 premium-card">
               <h3 className="font-semibold">{q}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a}</p>
             </div>
@@ -1883,7 +1882,7 @@ function LuxuryHallsExperience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06 }}
-                  className="glass rounded-2xl p-5 shadow-card"
+                  className="glass rounded-2xl p-5 premium-card"
                 >
                   <div className="font-display text-3xl text-gradient-gold font-semibold">
                     {value}
@@ -1922,7 +1921,7 @@ function LuxuryHallsExperience() {
               key={item.title}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * 0.04 }}
-              className="glass rounded-3xl p-6 shadow-card"
+              className="glass rounded-3xl p-6 premium-card"
             >
               <div className="w-12 h-12 rounded-2xl bg-gradient-saffron grid place-items-center shadow-glow">
                 <item.icon className="w-5 h-5 text-white" />
@@ -1952,7 +1951,7 @@ function LuxuryHallsExperience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group glass rounded-[2rem] overflow-hidden shadow-card hover:shadow-soft transition-all duration-500"
+              className="group glass rounded-[2rem] overflow-hidden premium-card"
             >
               <div className="relative h-[440px] overflow-hidden">
                 <img
@@ -1960,7 +1959,7 @@ function LuxuryHallsExperience() {
                   alt={hall.name}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/90 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -2002,7 +2001,7 @@ function LuxuryHallsExperience() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {eventPackages.map(([name, price, text]) => (
-              <div key={name} className="glass rounded-3xl p-6 shadow-card">
+              <div key={name} className="glass rounded-3xl p-6 premium-card">
                 <div className="text-xs uppercase tracking-widest text-saffron-deep">{name}</div>
                 <div className="mt-3 font-display text-4xl text-gradient-gold font-semibold">
                   ₹{price}
@@ -2010,7 +2009,7 @@ function LuxuryHallsExperience() {
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{text}</p>
                 <a
                   href="/contact#booking"
-                  className="mt-6 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-accent transition"
+                  className="mt-6 btn-outline-dark text-center rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center"
                 >
                   Enquire
                 </a>
@@ -2037,7 +2036,7 @@ function LuxuryHallsExperience() {
               "Plan setup and seating",
               "Arrive for the gathering",
             ].map((step, i) => (
-              <div key={step} className="glass rounded-2xl p-5 shadow-card">
+              <div key={step} className="glass rounded-2xl p-5 premium-card">
                 <div className="font-display text-3xl text-gradient-gold">0{i + 1}</div>
                 <div className="mt-3 font-semibold">{step}</div>
               </div>
@@ -2063,7 +2062,7 @@ function LuxuryHallsExperience() {
               "Seating flexibility",
               "Seva team coordination",
             ].map((item) => (
-              <div key={item} className="glass rounded-2xl p-5 flex gap-4 shadow-card">
+              <div key={item} className="glass rounded-2xl p-5 flex gap-4 premium-card">
                 <Sparkle className="w-5 h-5 text-saffron-deep" />
                 <span className="font-medium">{item}</span>
               </div>
@@ -2085,14 +2084,14 @@ function LuxuryHallsExperience() {
           {[hallImage, hallImage, hallImage].map((img, i) => (
             <figure
               key={i}
-              className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card"
+              className="relative aspect-[4/3] overflow-hidden rounded-3xl premium-card"
             >
               <img
                 src={img}
                 alt="Satsang hall gallery"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </figure>
           ))}
@@ -2100,7 +2099,7 @@ function LuxuryHallsExperience() {
       </section>
 
       <section className="relative py-24 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto text-center glass rounded-[2rem] p-8 sm:p-12 shadow-soft">
+        <div className="max-w-5xl mx-auto text-center glass rounded-[2rem] p-8 sm:p-12 premium-card">
           <p className="text-xs uppercase tracking-[0.28em] text-saffron-deep font-medium">
             Reserve Your Hall
           </p>
