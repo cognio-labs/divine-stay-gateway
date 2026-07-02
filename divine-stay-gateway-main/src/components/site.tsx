@@ -1517,15 +1517,7 @@ export function PageHero({
   );
 }
 
-const roomData = [
-  {
-    category: "Standard",
-    name: "Standard Ashram Room",
-    img: roomStandardImage,
-    price: "1,299",
-    capacity: "2 Guests",
-    badge: "Most Popular",
-    description:
+
       "A simple, clean, and peaceful room perfect for individuals or pairs seeking a quiet spiritual stay.",
     amenities: ["AC", "Attached Washroom", "Twin Beds", "Hot Water"],
     policies: [
