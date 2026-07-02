@@ -103,7 +103,7 @@ export function Navbar() {
     >
       <div className="flex items-center justify-between">
         <a href="/" className="group inline-flex items-center" aria-label="Science Divine home">
-          <span className="inline-flex items-center rounded-[1.25rem] bg-white/95 px-3 py-2 shadow-card ring-1 ring-black/5 backdrop-blur-sm transition-transform duration-300 group-hover:scale-[1.02]">
+          <span className="inline-flex items-center px-1 py-1 transition-transform duration-300 group-hover:scale-[1.02]">
             <img
               src={siteLogo}
               alt="Science Divine logo"
