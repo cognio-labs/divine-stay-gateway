@@ -77,25 +77,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sakshi Dham International — Spiritual Ashram Stay in Vrindavan" },
-      {
-        name: "description",
-        content:
-          "Book peaceful rooms and satsang halls at Sakshi Dham International, a premium spiritual ashram in the heart of Vrindavan.",
-      },
+      { title: siteTitle },
+      { name: "description", content: siteDescription },
       { name: "author", content: "Sakshi Dham International" },
-      { property: "og:title", content: "Sakshi Dham International — Vrindavan Ashram" },
-      {
-        property: "og:description",
-        content:
-          "A divine, peaceful stay in Vrindavan. Premium rooms, spacious satsang halls, and a truly spiritual atmosphere.",
-      },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: siteTitle },
+      { property: "og:description", content: siteDescription },
+      { property: "og:image", content: socialImageUrl },
+      { property: "og:image:alt", content: "Sakshi Dham International Vrindavan Ashram" },
+      { property: "og:url", content: siteUrl },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: siteTitle },
+      { name: "twitter:description", content: siteDescription },
+      { name: "twitter:image", content: socialImageUrl },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: siteUrl },
+      { rel: "icon", href: brandLogoUrl, type: "image/png" },
+      { rel: "apple-touch-icon", href: brandLogoUrl },
+      { rel: "preload", as: "image", href: socialImageUrl, fetchPriority: "high" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
