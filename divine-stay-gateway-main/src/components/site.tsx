@@ -1518,8 +1518,6 @@ export function PageHero({
 }
 
 
-      "A simple, clean, and peaceful room perfect for individuals or pairs seeking a quiet spiritual stay.",
-    amenities: ["AC", "Attached Washroom", "Twin Beds", "Hot Water"],
     policies: [
       "Check-in from 12:00 PM",
       "Ideal for companions",
