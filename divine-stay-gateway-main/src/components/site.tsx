@@ -1,5 +1,5 @@
 import { useLocation } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Menu,
@@ -38,6 +38,8 @@ import heroHall from "@/assets/hero-hall.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import exterior from "@/assets/exterior.jpg";
 import flowers from "@/assets/flowers.jpg";
+import roomDeluxeStock from "@/assets/room-deluxe.jpg";
+import roomFamilyStock from "@/assets/room-family.jpg";
 
 const gurujiImage = "/guruji.png";
 const siteLogo = "https://sciencedivine.org/wp-content/uploads/2023/07/cropped-SD_logo.png";
@@ -1361,6 +1363,7 @@ export function PageHero({
 }
 
 const luxuryRooms = [
+  // DELUXE CATEGORY
   {
     category: "Deluxe",
     name: "Deluxe Devotee Room",
@@ -1378,6 +1381,56 @@ const luxuryRooms = [
     ],
   },
   {
+    category: "Deluxe",
+    name: "Deluxe Comfort Room",
+    img: "/assets-custom/room-deluxe-new.png",
+    price: "1,699",
+    capacity: "2 Guests",
+    badge: "Popular Choice",
+    description:
+      "Modern deluxe AC room offering gorgeous garden views, comfortable double bed, and clean attached washroom.",
+    amenities: ["AC", "Attached Washroom", "Hot Water", "Garden View"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "No smoking allowed",
+      "Vrindavan local guidelines apply",
+    ],
+  },
+  {
+    category: "Deluxe",
+    name: "Deluxe Twin Room",
+    img: roomDeluxeStock,
+    price: "1,599",
+    capacity: "2 Guests",
+    badge: "Pilgrim Friendly",
+    description:
+      "Features two separate single beds, AC, hot water, and modern facilities. Perfect for friends or co-travelers.",
+    amenities: ["AC", "Attached Washroom", "Twin Beds", "Hot Water"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Ideal for companions",
+      "Quiet environment",
+    ],
+  },
+  {
+    category: "Deluxe",
+    name: "Deluxe Balcony Room",
+    img: "/assets-custom/room-blue-new.jpg",
+    price: "1,899",
+    capacity: "2 Guests",
+    badge: "Courtyard View",
+    description:
+      "Peaceful corner deluxe room with a private balcony overlooking the beautiful ashram courtyard.",
+    amenities: ["AC", "Attached Washroom", "Private Balcony", "Hot Water"],
+    policies: [
+      "Check-in from 12:00 PM",
+      "Quiet hours after 10:00 PM",
+      "Complimentary morning tea",
+    ],
+  },
+
+  // FAMILY CATEGORY
+  {
     category: "Family",
     name: "Family Comfort Room",
     img: roomFamilyImage,
@@ -1389,6 +1442,44 @@ const luxuryRooms = [
     amenities: ["Family Beds", "Window AC", "Attached Washroom", "Extra Bedding"],
     policies: ["Ideal for families", "Advance booking preferred", "Reception support available"],
   },
+  {
+    category: "Family",
+    name: "Family Suite Room",
+    img: "/assets-custom/room-family-new.jpg",
+    price: "2,999",
+    capacity: "4-6 Guests",
+    badge: "Best for Kids",
+    description:
+      "A large suite featuring three beds, AC, attached bathroom, and a mini-living space for comfortable family bonding.",
+    amenities: ["AC", "Attached Washroom", "3 Beds", "Spacious Layout"],
+    policies: ["Children welcome", "Extra mattress available", "Daily room cleaning"],
+  },
+  {
+    category: "Family",
+    name: "Family Deluxe Room",
+    img: roomFamilyStock,
+    price: "2,799",
+    capacity: "4-5 Guests",
+    badge: "Best Value",
+    description:
+      "Spacious room equipped with two double beds, AC, and a cozy seating area. Ideal for groups of 4 to 5 members.",
+    amenities: ["AC", "Attached Washroom", "Two Double Beds", "Seating Area"],
+    policies: ["Group check-in permitted", "ID verification required", "Hot water available"],
+  },
+  {
+    category: "Family",
+    name: "Family Ground Floor Room",
+    img: "/assets-custom/room-2.jpeg",
+    price: "2,399",
+    capacity: "3-5 Guests",
+    badge: "Elderly Friendly",
+    description:
+      "Convenient ground-floor room with easy wheel-chair access, 3 beds, AC, and attached safety-grab washroom.",
+    amenities: ["AC", "Attached Washroom", "Easy Access", "Ground Floor"],
+    policies: ["Ideal for seniors", "Wheelchair assistance on request", "Near temple gate"],
+  },
+
+  // PREMIUM SUITE CATEGORY
   {
     category: "Premium Suite",
     name: "Premium Suite Stay",
@@ -1402,6 +1493,44 @@ const luxuryRooms = [
     policies: ["Limited availability", "Best for senior guests", "Booking confirmation by call"],
   },
   {
+    category: "Premium Suite",
+    name: "Premium Luxury Suite",
+    img: "/assets-custom/room-deluxe-new.png",
+    price: "4,499",
+    capacity: "2-3 Guests",
+    badge: "Luxury Premium",
+    description:
+      "Ultra-comfortable suite featuring a royal king bed, chandelier lighting, premium furnishings, and absolute quiet.",
+    amenities: ["AC", "Luxury Bed", "Modern Washroom", "Priority Check-in"],
+    policies: ["Advance booking required", "Special dietary breakfast included", "Spiritual guidance session option"],
+  },
+  {
+    category: "Premium Suite",
+    name: "Premium Garden Suite",
+    img: "/assets-custom/mandir-wide.jpeg",
+    price: "3,999",
+    capacity: "2 Guests",
+    badge: "Premium View",
+    description:
+      "Bespoke suite featuring premium bedding, private outdoor sit-out, garden view, and highly peaceful atmosphere.",
+    amenities: ["AC", "Premium Bed", "Private Sit-out", "Garden Access"],
+    policies: ["Quiet hours strictly followed", "Premium amenities", "Welcome kit provided"],
+  },
+  {
+    category: "Premium Suite",
+    name: "Premium Heritage Suite",
+    img: "/assets-custom/hall-maha-new.png",
+    price: "4,999",
+    capacity: "2-3 Guests",
+    badge: "Heritage Signature",
+    description:
+      "Experience royal Vrindavan heritage with hand-carved furniture, premium bath fittings, and a grand spacious layout.",
+    amenities: ["AC", "Heritage Decor", "Attached Washroom", "Extra Spacious"],
+    policies: ["Limited rooms available", "Spiritual library access", "VIP support team"],
+  },
+
+  // EXECUTIVE CATEGORY
+  {
     category: "Executive",
     name: "Executive Seva Room",
     img: roomDeluxeImage,
@@ -1412,6 +1541,42 @@ const luxuryRooms = [
       "A refined stay option with a calm setting for coordinators, speakers, and guests visiting for satsang events.",
     amenities: ["AC", "Work Corner", "Attached Washroom", "Priority Check-in"],
     policies: ["Subject to availability", "Recommended for event guests", "Early request advised"],
+  },
+  {
+    category: "Executive",
+    name: "Executive Business Room",
+    img: roomDeluxeStock,
+    price: "3,299",
+    capacity: "2 Guests",
+    badge: "Business Comfort",
+    description:
+      "Quiet executive room with a dedicated workspace, study lamp, high-speed WiFi, AC, and clean attached washroom.",
+    amenities: ["AC", "Work Desk", "High-speed WiFi", "Attached Washroom"],
+    policies: ["Complimentary WiFi", "ID verification required", "Express laundry available"],
+  },
+  {
+    category: "Executive",
+    name: "Executive Comfort Room",
+    img: "/assets-custom/room-blue-new.jpg",
+    price: "3,599",
+    capacity: "2 Guests",
+    badge: "Comfort Plus",
+    description:
+      "Plush premium bedding, quiet zone air conditioning, warm minimalist interior design, and 24/7 reception support.",
+    amenities: ["AC", "Attached Washroom", "Quiet Zone", "Premium Bedding"],
+    policies: ["Quiet hours after 10:00 PM", "Eco-friendly toiletries", "Complimentary mineral water"],
+  },
+  {
+    category: "Executive",
+    name: "Executive Deluxe Room",
+    img: "/assets-custom/room-deluxe-new.png",
+    price: "3,799",
+    capacity: "2 Guests",
+    badge: "Executive Deluxe",
+    description:
+      "Elegant room styling, spacious wooden wardrobe, premium AC layout, attached hot shower, and direct room service.",
+    amenities: ["AC", "Attached Washroom", "Wardrobe", "Room Service"],
+    policies: ["No pets allowed", "Spiritual decor", "Card payments accepted"],
   },
 ];
 
@@ -1574,75 +1739,81 @@ function LuxuryRoomsExperience() {
               </button>
             ))}
           </div>
-          <div className="mt-14 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {visibleRooms.map((room, index) => (
-              <motion.article
-                key={room.name}
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.06, duration: 0.55 }}
-                className="group glass rounded-3xl overflow-hidden premium-card"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={room.img}
-                    alt={room.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">
-                    {room.badge}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="text-xs uppercase tracking-widest text-saffron-deep font-semibold">
-                    {room.category}
+          <motion.div 
+            layout 
+            className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          >
+            <AnimatePresence mode="popLayout">
+              {visibleRooms.map((room, index) => (
+                <motion.article
+                  layout
+                  initial={{ opacity: 0, scale: 0.9, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 15 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  key={room.name}
+                  className="group glass rounded-3xl overflow-hidden premium-card flex flex-col h-full"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={room.img}
+                      alt={room.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-semibold">
+                      {room.badge}
+                    </span>
                   </div>
-                  <h3 className="mt-2 font-display text-2xl font-semibold">{room.name}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {room.description}
-                  </p>
-                  <div className="mt-5 flex items-end justify-between gap-4">
-                    <div>
-                      <div className="text-xs text-muted-foreground uppercase tracking-widest">
-                        From
-                      </div>
-                      <div className="font-display text-3xl font-semibold text-gradient-gold">
-                        ₹{room.price}
-                      </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="text-xs uppercase tracking-widest text-saffron-deep font-semibold">
+                      {room.category}
                     </div>
-                    <div className="text-right text-xs text-muted-foreground">{room.capacity}</div>
+                    <h3 className="mt-2 font-display text-2xl font-semibold">{room.name}</h3>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">
+                      {room.description}
+                    </p>
+                    <div className="mt-5 flex items-end justify-between gap-4">
+                      <div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-widest">
+                          From
+                        </div>
+                        <div className="font-display text-3xl font-semibold text-gradient-gold">
+                          ₹{room.price}
+                        </div>
+                      </div>
+                      <div className="text-right text-xs text-muted-foreground">{room.capacity}</div>
+                    </div>
+                    <div className="mt-5 grid grid-cols-2 gap-2 text-xs text-muted-foreground">
+                      {room.amenities.slice(0, 4).map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <Check className="w-3 h-3 text-saffron-deep" />
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-6 flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setActiveRoom(room)}
+                        className="flex-1 btn-outline-dark text-center rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center"
+                      >
+                        Details
+                      </button>
+                      <a
+                        href="/contact#booking"
+                        className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold"
+                      >
+                        Book
+                      </a>
+                    </div>
                   </div>
-                  <div className="mt-5 grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                    {room.amenities.slice(0, 4).map((item) => (
-                      <span key={item} className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-saffron-deep" />
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setActiveRoom(room)}
-                      className="flex-1 btn-outline-dark text-center rounded-full py-2.5 text-sm font-semibold inline-flex items-center justify-center"
-                    >
-                      Details
-                    </button>
-                    <a
-                      href="/contact#booking"
-                      className="flex-1 btn-saffron text-center rounded-full py-2.5 text-sm font-semibold"
-                    >
-                      Book
-                    </a>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 
