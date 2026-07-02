@@ -77,6 +77,9 @@ export function Navbar() {
             <img
               src={siteLogo}
               alt="Sakshi Dham logo"
+              width={40}
+              height={40}
+              decoding="async"
               className="h-10 w-10 rounded-full object-contain bg-white shadow-glow"
             />
             <div className="leading-tight">
@@ -180,6 +183,9 @@ export function Hero() {
           className="w-full h-full object-cover"
           width={1920}
           height={1280}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#2a1a10]/70 via-[#3a2718]/60 to-[#faf7f2]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,164,76,0.35),transparent_60%)]" />
@@ -324,6 +330,7 @@ export function About() {
               src={exterior}
               alt="Sakshi Dham exterior"
               loading="lazy"
+              decoding="async"
               width={1280}
               height={960}
               className="w-full h-[520px] object-cover"
@@ -334,6 +341,7 @@ export function About() {
               src={flowers}
               alt="Diya and marigold"
               loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
@@ -445,6 +453,7 @@ export function Rooms() {
                 src={r.img}
                 alt={r.name}
                 loading="lazy"
+                decoding="async"
                 width={1280}
                 height={896}
                 className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
@@ -535,6 +544,7 @@ export function Halls() {
                 src={h.img}
                 alt={h.name}
                 loading="lazy"
+                decoding="async"
                 width={1280}
                 height={896}
                 className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
@@ -611,6 +621,7 @@ export function Gallery() {
               src={g.src}
               alt={g.alt}
               loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -627,6 +638,7 @@ export function Gallery() {
 /* ----------------------------- BOOKING ---------------------------- */
 export function Booking() {
   const [submitted, setSubmitted] = useState(false);
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -640,8 +652,10 @@ export function Booking() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setAttemptedSubmit(true);
     if (!form.name || !form.phone || !form.checkin || !form.checkout) return;
     setSubmitted(true);
+    setAttemptedSubmit(false);
     setTimeout(() => setSubmitted(false), 5000);
   }
 
@@ -669,47 +683,77 @@ export function Booking() {
         >
           <div className="grid sm:grid-cols-2 gap-4">
             <Field
+              id="booking-name"
+              name="name"
               label="Full Name"
               value={form.name}
               onChange={(v) => setForm({ ...form, name: v })}
+              autoComplete="name"
               required
+              invalid={attemptedSubmit && !form.name}
+              error="Please enter your full name."
             />
             <Field
+              id="booking-phone"
+              name="phone"
               label="Phone"
               type="tel"
               value={form.phone}
               onChange={(v) => setForm({ ...form, phone: v })}
+              autoComplete="tel"
               required
+              invalid={attemptedSubmit && !form.phone}
+              error="Please enter your phone number."
             />
             <Field
+              id="booking-email"
+              name="email"
               label="Email"
               type="email"
               value={form.email}
               onChange={(v) => setForm({ ...form, email: v })}
+              autoComplete="email"
               className="sm:col-span-2"
             />
             <Field
+              id="booking-checkin"
+              name="checkin"
               label="Check-in"
               type="date"
               value={form.checkin}
               onChange={(v) => setForm({ ...form, checkin: v })}
+              autoComplete="off"
               required
+              invalid={attemptedSubmit && !form.checkin}
+              error="Please choose your check-in date."
               icon={Calendar}
             />
             <Field
+              id="booking-checkout"
+              name="checkout"
               label="Check-out"
               type="date"
               value={form.checkout}
               onChange={(v) => setForm({ ...form, checkout: v })}
+              autoComplete="off"
               required
+              invalid={attemptedSubmit && !form.checkout}
+              error="Please choose your check-out date."
               icon={Calendar}
             />
             <div>
-              <label className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
+              <label
+                htmlFor="booking-type"
+                className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold"
+              >
                 Room / Hall
               </label>
               <select
+                id="booking-type"
+                name="roomType"
                 value={form.type}
+                aria-invalid={false}
+                aria-describedby="booking-type-help"
                 onChange={(e) => setForm({ ...form, type: e.target.value })}
                 className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-saffron transition"
               >
@@ -719,24 +763,38 @@ export function Booking() {
                 <option>Maha Satsang Hall</option>
                 <option>Spiritual Event Hall</option>
               </select>
+              <p id="booking-type-help" className="sr-only">Choose a room or hall for this booking.</p>
             </div>
             <Field
+              id="booking-guests"
+              name="guests"
               label="Guests"
               type="number"
               value={form.guests}
               onChange={(v) => setForm({ ...form, guests: v })}
+              autoComplete="off"
+              min="1"
             />
             <div className="sm:col-span-2">
-              <label className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
+              <label
+                htmlFor="booking-message"
+                className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold"
+              >
                 Special Request
               </label>
               <textarea
+                id="booking-message"
+                name="message"
                 value={form.note}
+                aria-invalid={false}
+                aria-describedby="booking-message-help"
+                autoComplete="off"
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
                 rows={3}
                 className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-saffron transition resize-none"
                 placeholder="Dietary needs, arrival time, satsang preferences…"
               />
+              <p id="booking-message-help" className="sr-only">Share arrival time, dietary needs, or satsang preferences.</p>
             </div>
           </div>
 
@@ -764,25 +822,41 @@ export function Booking() {
 }
 
 function Field({
+  id,
+  name,
   label,
   value,
   onChange,
   type = "text",
+  autoComplete,
   required,
+  invalid = false,
+  error,
+  min,
   className = "",
   icon: Icon,
 }: {
+  id: string;
+  name: string;
   label: string;
   value: string;
   onChange: (v: string) => void;
   type?: string;
+  autoComplete?: string;
   required?: boolean;
+  invalid?: boolean;
+  error?: string;
+  min?: string;
   className?: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: React.ComponentType<{ className?: string }>; 
 }) {
+  const helpId = `${id}-help`;
   return (
     <div className={className}>
-      <label className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
+      <label
+        htmlFor={id}
+        className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold"
+      >
         {label} {required && <span className="text-saffron-deep">*</span>}
       </label>
       <div className="relative mt-2">
@@ -790,15 +864,25 @@ function Field({
           <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
         )}
         <input
+          id={id}
+          name={name}
           type={type}
           value={value}
           required={required}
+          min={min}
+          autoComplete={autoComplete}
+          aria-invalid={invalid}
+          aria-describedby={helpId}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full rounded-xl border border-border bg-background/60 py-3 text-sm outline-none focus:ring-2 focus:ring-saffron transition ${
-            Icon ? "pl-10 pr-4" : "px-4"
-          }`}
+          className={
+            "w-full rounded-xl border border-border bg-background/60 py-3 text-sm outline-none focus:ring-2 focus:ring-saffron transition " +
+            (Icon ? "pl-10 pr-4" : "px-4")
+          }
         />
       </div>
+      <p id={helpId} className={invalid ? "mt-1 text-xs text-destructive" : "sr-only"}>
+        {invalid ? error : `${label} field`}
+      </p>
     </div>
   );
 }
@@ -851,6 +935,7 @@ export function Testimonials() {
 
 /* ------------------------------ CONTACT ---------------------------- */
 export function Contact() {
+  const [showMap, setShowMap] = useState(false);
   const cards = [
     { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
     {
@@ -900,15 +985,32 @@ export function Contact() {
 
         <div
           id="map"
-          className="rounded-3xl overflow-hidden shadow-soft ring-1 ring-border h-[420px] lg:h-full min-h-[420px]"
+          className="relative rounded-3xl overflow-hidden shadow-soft ring-1 ring-border h-[420px] lg:h-full min-h-[420px] bg-gradient-soft"
         >
-          <iframe
-            title="Sakshi Dham location"
-            src="https://www.google.com/maps?q=Vrindavan,Uttar+Pradesh,India&output=embed"
-            className="w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          {showMap ? (
+            <iframe
+              title="Sakshi Dham location"
+              src="https://www.google.com/maps?q=Vrindavan,Uttar+Pradesh,India&output=embed"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+              <MapPin className="w-10 h-10 text-saffron-deep" aria-hidden="true" />
+              <h3 className="mt-4 font-display text-3xl font-semibold">Vrindavan, Uttar Pradesh</h3>
+              <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+                Open the interactive Google Map only when you need directions.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowMap(true)}
+                className="mt-6 btn-saffron rounded-full px-6 py-3 text-sm font-semibold"
+              >
+                View Interactive Map
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
