@@ -1512,36 +1512,7 @@ export function PageHero({
             {primaryLabel} <ChevronRight className="w-4 h-4" />
           </a>
         </motion.div>
-      </div>
-    </section>
-  );
-}
 
-
-    ],
-  },
-  {
-    category: "Deluxe",
-    name: "Deluxe Balcony Room",
-    img: "/assets-custom/room-blue-new.jpg",
-    price: "1,899",
-    capacity: "2 Guests",
-    badge: "Courtyard View",
-    description:
-      "Peaceful corner deluxe room with a private balcony overlooking the beautiful ashram courtyard.",
-    amenities: ["AC", "Attached Washroom", "Private Balcony", "Hot Water"],
-    policies: [
-      "Check-in from 12:00 PM",
-      "Quiet hours after 10:00 PM",
-      "Complimentary morning tea",
-    ],
-  },
-
-  // FAMILY CATEGORY
-  {
-    category: "Family",
-    name: "Family Comfort Room",
-    img: roomFamilyImage,
     price: "2,499",
     capacity: "3-5 Guests",
     badge: "Family Choice",
