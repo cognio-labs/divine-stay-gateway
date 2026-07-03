@@ -103,9 +103,7 @@ export function Navbar() {
     >
       <div className="flex items-center justify-between">
         <a href="/" className="group inline-flex items-center" aria-label="Science Divine home">
-          <span className={`inline-flex items-center transition-transform duration-300 group-hover:scale-[1.02] ${
-            useSolidNavbar ? "px-1 py-1" : "bg-white/95 rounded-xl px-3 py-1.5 shadow-sm"
-          }`}>
+          <span className="inline-flex items-center px-1 py-1 transition-transform duration-300 group-hover:scale-[1.02]">
             <img
               src={siteLogo}
               alt="Science Divine logo"
@@ -215,7 +213,7 @@ export function Hero() {
         <img
           src={heroHall}
           alt="Sakshi Dham satsang hall"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover filter blur-[6px] scale-105"
           width={1920}
           height={1280}
           loading="eager"
@@ -1275,15 +1273,13 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <div className="bg-white rounded-xl px-3 py-1.5 w-fit shadow-md">
-              <img
-                src={siteLogo}
-                alt="Science Divine logo"
-                width={218}
-                height={87}
-                className="h-10 w-auto object-contain"
-              />
-            </div>
+            <img
+              src={siteLogo}
+              alt="Science Divine logo"
+              width={218}
+              height={87}
+              className="h-10 w-auto object-contain"
+            />
             <div>
               <div className="font-display text-xl font-semibold text-white">
                 Sakshi Dham International
