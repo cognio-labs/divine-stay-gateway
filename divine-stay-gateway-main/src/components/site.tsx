@@ -95,10 +95,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
-        useSolidNavbar
-          ? "top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full bg-white border border-border/40 shadow-soft py-2.5 px-6"
-          : "top-0 w-full bg-transparent py-5 px-6 border-b border-transparent"
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full shadow-soft py-2.5 px-6 ${
+        scrolled
+          ? "bg-white border border-border/40"
+          : "bg-white/85 backdrop-blur-md border border-white/25"
       }`}
     >
       <div className="flex items-center justify-between">
@@ -125,9 +125,7 @@ export function Navbar() {
                 className={`text-sm font-semibold relative group transition-colors duration-300 ${
                   active
                     ? "text-primary"
-                    : useSolidNavbar
-                    ? "text-foreground/80 hover:text-foreground"
-                    : "text-white/85 hover:text-white drop-shadow-sm"
+                    : "text-foreground/80 hover:text-foreground"
                 }`}
               >
                 {n.label}
@@ -150,11 +148,7 @@ export function Navbar() {
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" />
           </a>
           <button
-            className={`lg:hidden w-10 h-10 grid place-items-center rounded-full border transition-all duration-300 ${
-              useSolidNavbar
-                ? "border-border bg-white/40 text-foreground"
-                : "border-white/20 bg-white/10 text-white"
-            }`}
+            className="lg:hidden w-10 h-10 grid place-items-center rounded-full border transition-all duration-300 border-border bg-white/40 text-foreground"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
