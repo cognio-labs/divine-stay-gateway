@@ -97,13 +97,15 @@ export function Navbar() {
     <header
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
         useSolidNavbar
-          ? "top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full glass shadow-soft py-2.5 px-6"
+          ? "top-4 w-[calc(100%-2rem)] max-w-6xl rounded-full bg-white border border-border/40 shadow-soft py-2.5 px-6"
           : "top-0 w-full bg-transparent py-5 px-6 border-b border-transparent"
       }`}
     >
       <div className="flex items-center justify-between">
         <a href="/" className="group inline-flex items-center" aria-label="Science Divine home">
-          <span className="inline-flex items-center px-1 py-1 transition-transform duration-300 group-hover:scale-[1.02]">
+          <span className={`inline-flex items-center transition-transform duration-300 group-hover:scale-[1.02] ${
+            useSolidNavbar ? "px-1 py-1" : "bg-white/95 rounded-xl px-3 py-1.5 shadow-sm"
+          }`}>
             <img
               src={siteLogo}
               alt="Science Divine logo"
@@ -167,7 +169,7 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden mt-2 glass rounded-2xl p-4 shadow-soft"
+          className="lg:hidden mt-2 bg-white border border-border/40 rounded-2xl p-4 shadow-soft"
         >
           <div className="flex flex-col gap-1">
             {nav.map((n) => (
@@ -1268,16 +1270,20 @@ export function Contact() {
 /* ------------------------------ FOOTER ---------------------------- */
 export function Footer() {
   return (
-    <footer className="relative mt-10 bg-[#241811] text-white/80 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(232,164,76,0.25),transparent_50%)]" />
+    <footer className="relative mt-10 bg-black text-white/80 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(232,164,76,0.25),transparent_50%)] opacity-30" />
       <div className="relative max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3">
-            <img
-              src={siteLogo}
-              alt="Sakshi Dham logo"
-              className="h-12 w-12 rounded-full object-contain bg-white shadow-glow"
-            />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="bg-white rounded-xl px-3 py-1.5 w-fit shadow-md">
+              <img
+                src={siteLogo}
+                alt="Science Divine logo"
+                width={218}
+                height={87}
+                className="h-10 w-auto object-contain"
+              />
+            </div>
             <div>
               <div className="font-display text-xl font-semibold text-white">
                 Sakshi Dham International
