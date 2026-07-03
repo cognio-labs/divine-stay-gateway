@@ -47,7 +47,7 @@ const mandirImage = "/assets-custom/mandir-wide.webp";
 const roomDeluxeImage = "/assets-custom/room-1.webp";
 const roomFamilyImage = "/assets-custom/room-2.webp";
 const hallImage = "/assets-custom/hall-1.webp";
-const washroomImage = "/assets-custom/washroom-1-v2.webp";
+const washroomImage = "/assets-custom/washroom-1-v3.webp";
 
 const nav = [
   { label: "Home", href: "/" },
