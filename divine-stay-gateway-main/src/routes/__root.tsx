@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import heroHallUrl from "../assets/hero-hall.webp";
 
 const siteUrl = "https://sakshi-dham-international.vercel.app/";
 const brandLogoUrl = "https://sciencedivine.org/wp-content/uploads/2023/07/cropped-SD_logo.png";
@@ -105,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "canonical", href: siteUrl },
       { rel: "icon", href: brandLogoUrl, type: "image/png" },
       { rel: "apple-touch-icon", href: brandLogoUrl },
-      { rel: "preload", as: "image", href: socialImageUrl, fetchPriority: "high" },
+      { rel: "preload", as: "image", href: heroHallUrl, fetchPriority: "high" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -121,10 +122,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Sakshi Dham International",
+    "description": "A peaceful spiritual ashram offering divine stay, satsang halls, and warm hospitality in the sacred land of Vrindavan.",
+    "image": "https://sakshi-dham-international.vercel.app/assets-custom/mandir-new.webp",
+    "url": "https://sakshi-dham-international.vercel.app/",
+    "telephone": "+91 98765 43210",
+    "email": "info@sakshidham.org",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vrindavan",
+      "addressLocality": "Vrindavan",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "IN"
+    },
+    "priceRange": "₹₹"
+  };
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body>
         {children}

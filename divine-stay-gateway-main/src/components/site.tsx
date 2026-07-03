@@ -34,20 +34,20 @@ import {
   Landmark,
 } from "lucide-react";
 
-import heroHall from "@/assets/hero-hall.jpg";
-import roomSuite from "@/assets/room-suite.jpg";
-import exterior from "@/assets/exterior.jpg";
-import flowers from "@/assets/flowers.jpg";
-import roomDeluxeStock from "@/assets/room-deluxe.jpg";
-import roomFamilyStock from "@/assets/room-family.jpg";
+import heroHall from "@/assets/hero-hall.webp";
+import roomSuite from "@/assets/room-suite.webp";
+import exterior from "@/assets/exterior.webp";
+import flowers from "@/assets/flowers.webp";
+import roomDeluxeStock from "@/assets/room-deluxe.webp";
+import roomFamilyStock from "@/assets/room-family.webp";
 
-const gurujiImage = "/guruji.png";
-const siteLogo = "/science-divine-logo.png";
-const mandirImage = "/assets-custom/mandir-wide.jpeg";
-const roomDeluxeImage = "/assets-custom/room-1.jpeg";
-const roomFamilyImage = "/assets-custom/room-2.jpeg";
-const hallImage = "/assets-custom/hall-1.jpeg";
-const washroomImage = "/assets-custom/washroom-1.jpeg";
+const gurujiImage = "/guruji.webp";
+const siteLogo = "/science-divine-logo.webp";
+const mandirImage = "/assets-custom/mandir-wide.webp";
+const roomDeluxeImage = "/assets-custom/room-1.webp";
+const roomFamilyImage = "/assets-custom/room-2.webp";
+const hallImage = "/assets-custom/hall-1.webp";
+const washroomImage = "/assets-custom/washroom-1.webp";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -241,6 +241,7 @@ export function Hero() {
             <img
               src={gurujiImage}
               alt="Guruji of Sakshi Dham International"
+              decoding="async"
               onError={(event) => {
                 event.currentTarget.src = flowers;
               }}
@@ -505,6 +506,8 @@ export function About() {
                 alt="Pujya Guruji of Sakshi Dham International"
                 loading="lazy"
                 decoding="async"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover object-top"
                 style={{ minHeight: "320px" }}
                 onError={(e) => { e.currentTarget.src = flowers; }}
@@ -759,15 +762,15 @@ export function Halls() {
 
 /* ----------------------------- GALLERY ---------------------------- */
 const galleryItems = [
-  { src: "/assets-custom/mandir-wide.jpeg", alt: "Sakshi Dham Mandir", category: "Mandir", span: "row-span-2 md:col-span-2" },
+  { src: "/assets-custom/mandir-wide.webp", alt: "Sakshi Dham Mandir", category: "Mandir", span: "row-span-2 md:col-span-2" },
   { src: roomDeluxeImage, alt: "Deluxe room", category: "Rooms", span: "" },
   { src: hallImage, alt: "Event hall", category: "Halls", span: "" },
-  { src: "/assets-custom/mandir-deity-portrait.jpeg", alt: "Mandir deity", category: "Mandir", span: "row-span-2" },
-  { src: "/assets-custom/hall-2.jpeg", alt: "Maha satsang hall", category: "Halls", span: "md:col-span-2" },
+  { src: "/assets-custom/mandir-deity-portrait.webp", alt: "Mandir deity", category: "Mandir", span: "row-span-2" },
+  { src: "/assets-custom/hall-2.webp", alt: "Maha satsang hall", category: "Halls", span: "md:col-span-2" },
   { src: washroomImage, alt: "Washroom", category: "Rooms", span: "" },
   { src: roomFamilyImage, alt: "Family room", category: "Rooms", span: "" },
-  { src: "/assets-custom/room-deluxe-new.png", alt: "Deluxe room view", category: "Rooms", span: "" },
-  { src: "/assets-custom/hall-maha-new.png", alt: "Maha hall interior", category: "Halls", span: "" },
+  { src: "/assets-custom/room-deluxe-new.webp", alt: "Deluxe room view", category: "Rooms", span: "" },
+  { src: "/assets-custom/hall-maha-new.webp", alt: "Maha hall interior", category: "Halls", span: "" },
 ];
 
 export function Gallery() {
@@ -835,6 +838,8 @@ export function Gallery() {
                 alt={g.alt}
                 loading="lazy"
                 decoding="async"
+                width={800}
+                height={600}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4" />
@@ -1278,6 +1283,8 @@ export function Footer() {
               alt="Science Divine logo"
               width={218}
               height={87}
+              loading="lazy"
+              decoding="async"
               className="h-10 w-auto object-contain"
             />
             <div>
@@ -1445,7 +1452,16 @@ export function PageHero({
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative h-[480px] rounded-3xl overflow-hidden shadow-soft border border-border"
           >
-            <img src={image} alt="" className="w-full h-full object-cover" />
+            <img
+              src={image}
+              alt={eyebrow || "Hero image"}
+              width={1280}
+              height={896}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
       </section>
@@ -1455,7 +1471,16 @@ export function PageHero({
   if (layout === "left") {
     return (
       <section className="relative min-h-[68vh] pt-40 pb-24 flex items-center overflow-hidden">
-        <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img
+          src={image}
+          alt={eyebrow || "Hero background"}
+          width={1920}
+          height={1080}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-left text-white">
           <motion.p
@@ -1544,7 +1569,7 @@ const luxuryRooms = [
   {
     category: "Deluxe",
     name: "Deluxe Comfort Room",
-    img: "/assets-custom/room-deluxe-new.png",
+    img: "/assets-custom/room-deluxe-new.webp",
     price: "1,699",
     capacity: "2 Guests",
     badge: "Popular Choice",
@@ -1576,7 +1601,7 @@ const luxuryRooms = [
   {
     category: "Deluxe",
     name: "Deluxe Balcony Room",
-    img: "/assets-custom/room-blue-new.jpg",
+    img: "/assets-custom/room-blue-new.webp",
     price: "1,899",
     capacity: "2 Guests",
     badge: "Courtyard View",
@@ -1606,7 +1631,7 @@ const luxuryRooms = [
   {
     category: "Family",
     name: "Family Suite Room",
-    img: "/assets-custom/room-family-new.jpg",
+    img: "/assets-custom/room-family-new.webp",
     price: "2,999",
     capacity: "4-6 Guests",
     badge: "Best for Kids",
@@ -1630,7 +1655,7 @@ const luxuryRooms = [
   {
     category: "Family",
     name: "Family Ground Floor Room",
-    img: "/assets-custom/room-2.jpeg",
+    img: "/assets-custom/room-2.webp",
     price: "2,399",
     capacity: "3-5 Guests",
     badge: "Elderly Friendly",
@@ -1656,7 +1681,7 @@ const luxuryRooms = [
   {
     category: "Premium Suite",
     name: "Premium Luxury Suite",
-    img: "/assets-custom/room-deluxe-new.png",
+    img: "/assets-custom/room-deluxe-new.webp",
     price: "4,499",
     capacity: "2-3 Guests",
     badge: "Luxury Premium",
@@ -1668,7 +1693,7 @@ const luxuryRooms = [
   {
     category: "Premium Suite",
     name: "Premium Garden Suite",
-    img: "/assets-custom/mandir-wide.jpeg",
+    img: "/assets-custom/mandir-wide.webp",
     price: "3,999",
     capacity: "2 Guests",
     badge: "Premium View",
@@ -1680,7 +1705,7 @@ const luxuryRooms = [
   {
     category: "Premium Suite",
     name: "Premium Heritage Suite",
-    img: "/assets-custom/hall-maha-new.png",
+    img: "/assets-custom/hall-maha-new.webp",
     price: "4,999",
     capacity: "2-3 Guests",
     badge: "Heritage Signature",
@@ -1718,7 +1743,7 @@ const luxuryRooms = [
   {
     category: "Executive",
     name: "Executive Comfort Room",
-    img: "/assets-custom/room-blue-new.jpg",
+    img: "/assets-custom/room-blue-new.webp",
     price: "3,599",
     capacity: "2 Guests",
     badge: "Comfort Plus",
@@ -1730,7 +1755,7 @@ const luxuryRooms = [
   {
     category: "Executive",
     name: "Executive Deluxe Room",
-    img: "/assets-custom/room-deluxe-new.png",
+    img: "/assets-custom/room-deluxe-new.webp",
     price: "3,799",
     capacity: "2 Guests",
     badge: "Executive Deluxe",
@@ -1828,6 +1853,8 @@ function LuxuryRoomsExperience() {
                 alt="Luxury room at Sakshi Dham"
                 loading="lazy"
                 decoding="async"
+                width={800}
+                height={520}
                 className="h-[520px] w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/65 via-transparent to-transparent" />
@@ -1921,6 +1948,8 @@ function LuxuryRoomsExperience() {
                       alt={room.name}
                       loading="lazy"
                       decoding="async"
+                      width={1280}
+                      height={896}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
@@ -1984,6 +2013,8 @@ function LuxuryRoomsExperience() {
           alt="Family room promotion"
           loading="lazy"
           decoding="async"
+          width={1920}
+          height={1080}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#241811]/70" />
@@ -2112,6 +2143,10 @@ function LuxuryRoomsExperience() {
               <img
                 src={activeRoom.img}
                 alt={activeRoom.name}
+                loading="lazy"
+                decoding="async"
+                width={1280}
+                height={896}
                 className="w-full h-full object-cover"
               />
               <button
@@ -2232,6 +2267,8 @@ function LuxuryHallsExperience() {
               alt="Premium satsang hall"
               loading="lazy"
               decoding="async"
+              width={800}
+              height={520}
               className="w-full h-[520px] object-cover"
             />
           </motion.div>
@@ -2291,6 +2328,8 @@ function LuxuryHallsExperience() {
                   alt={hall.name}
                   loading="lazy"
                   decoding="async"
+                  width={1280}
+                  height={896}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#241811]/90 via-transparent to-transparent" />
@@ -2423,6 +2462,8 @@ function LuxuryHallsExperience() {
                 alt="Satsang hall gallery"
                 loading="lazy"
                 decoding="async"
+                width={1280}
+                height={896}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </figure>
@@ -2525,7 +2566,7 @@ export function AboutPage() {
           </>
         }
         subtitle="A spiritual home in Vrindavan shaped by seva, devotion, peaceful hospitality, and sacred gathering."
-        image="/assets-custom/mandir-wide.jpeg"
+        image="/assets-custom/mandir-wide.webp"
         primaryLabel="Plan Your Stay"
         primaryHref="/rooms"
       />
