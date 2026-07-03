@@ -47,7 +47,7 @@ const mandirImage = "/assets-custom/mandir-wide.webp";
 const roomDeluxeImage = "/assets-custom/room-1.webp";
 const roomFamilyImage = "/assets-custom/room-2.webp";
 const hallImage = "/assets-custom/hall-1.webp";
-const washroomImage = "/assets-custom/washroom-1.webp";
+const washroomImage = "/assets-custom/washroom-1-v2.webp";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -759,7 +759,7 @@ const galleryItems = [
   { src: "/assets-custom/mandir-wide.webp", alt: "Sakshi Dham Mandir", category: "Mandir", span: "row-span-2 md:col-span-2" },
   { src: roomDeluxeImage, alt: "Deluxe room", category: "Rooms", span: "" },
   { src: hallImage, alt: "Event hall", category: "Halls", span: "" },
-  { src: "/assets-custom/mandir-deity-portrait.webp", alt: "Mandir deity", category: "Mandir", span: "row-span-2" },
+  { src: "/assets-custom/mandir-deity-portrait-v2.webp", alt: "Mandir deity", category: "Mandir", span: "row-span-2" },
   { src: "/assets-custom/hall-2.webp", alt: "Maha satsang hall", category: "Halls", span: "md:col-span-2" },
   { src: washroomImage, alt: "Washroom", category: "Rooms", span: "" },
   { src: roomFamilyImage, alt: "Family room", category: "Rooms", span: "" },
